@@ -14,7 +14,7 @@ interface HeroProps {
 export default function Hero({ font }: HeroProps) {
   return (
     <motion.section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900"
+      className="relative min-h-screen flex max-md:py-20 items-center justify-center overflow-hidden bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
@@ -105,14 +105,14 @@ export default function Hero({ font }: HeroProps) {
         <div className="flex flex-col lg:flex-row items-center">
           {/* Text Content */}
           <motion.div 
-            className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0 lg:pr-12"
+            className="lg:w-1/2 text-center  lg:text-left mb-12 lg:mb-0 lg:pr-12"
             variants={fadeIn('right')}
           >
             <motion.h1 
-              className={`${font.className}  text-4xl md:text-6xl lg:text-[5rem] font-bold text-white mb-6 leading-tight`}
+              className={`${font.className}  text-4xl max-md:whitespace-pre-line md:text-6xl lg:text-[5rem] font-bold text-white mb-6 leading-tight`}
               variants={textVariant(0.2)}
             >
-              A Magia de <span className="text-yellow-400">Aladdin</span> e <span className="text-pink-400">Jasmine</span>
+              A Magia de {"\n"} <span className="text-yellow-400">Aladdin</span> e <span className="text-pink-400">Jasmine</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto lg:mx-0"
@@ -130,7 +130,7 @@ export default function Hero({ font }: HeroProps) {
                 whileTap={buttonTap}
               >
                 <Link href="#ingressos">
-                  <span className="relative z-10">Comprar Ingressos</span>
+                  <span className="relative z-10 max-md:text-sm max-md:uppercase">Comprar Ingressos</span>
                 </Link>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
               </motion.button>
@@ -143,7 +143,7 @@ export default function Hero({ font }: HeroProps) {
                 whileTap={buttonTap}
               >
                 <Link href="#sobre">
-                  <span className="relative z-10">Saiba Mais</span>
+                  <span className="relative z-10 max-md:text-sm max-md:uppercase">Saiba Mais</span>
                 </Link>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
               </motion.button>
@@ -193,7 +193,7 @@ export default function Hero({ font }: HeroProps) {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-10 z-[11] left-[50%-2rem] transform -translate-x-1/2"
+        className="absolute bottom-10 max-md:bottom-6 z-[11] left-[50%-2rem] transform -translate-x-1/2"
         animate={{
           y: [0, 15, 0],
         }}

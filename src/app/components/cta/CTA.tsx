@@ -182,16 +182,16 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               variants={primaryButton}
               transition={{ duration: 0.2 }}
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 max-md:text-sm flex items-center">
                 Garantir Minha Vaga Agora
                 <FaArrowRight className="ml-3 transition-transform group-hover:translate-x-1" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-200 opacity-0 group-hover:opacity-20 transition-opacity duration-200" />
+              <div className="absolute inset-0  bg-gradient-to-r from-yellow-400 to-yellow-200 opacity-0 group-hover:opacity-20 transition-opacity duration-200" />
             </motion.a>
             
             <motion.a
               href="#contato"
-              className="group relative px-8 py-5 rounded-full font-bold text-lg transition-all duration-300 overflow-hidden inline-flex items-center justify-center border-2"
+              className="group relative px-8 py-5 max-md:text-sm rounded-full font-bold text-lg transition-all duration-300 overflow-hidden inline-flex items-center justify-center border-2"
               style={{
                 borderColor: theme.colors.secondary,
                 color: theme.colors.secondary,
@@ -204,7 +204,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               variants={secondaryButton}
               transition={{ duration: 0.2 }}
             >
-              <FaWhatsapp className="mr-3 text-xl" />
+              <FaWhatsapp className="mr-3 text-xl " />
               Falar pelo WhatsApp
               <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-200" />
             </motion.a>

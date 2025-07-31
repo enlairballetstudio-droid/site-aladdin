@@ -239,7 +239,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               >
                 <div className="text-center">
                   <p className="text-sm text-purple-600 mb-2 font-medium">Valor Total do Pacote</p>
-                  <div className="text-5xl font-bold mb-2 text-purple-700">
+                  <div className="text-5xl max-md:text-4xl font-bold mb-2 text-purple-700">
                     R$ 1.299,90
                   </div>
                   <p className="text-purple-500 text-sm">
@@ -249,14 +249,14 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </motion.div>
               
               <motion.button 
-                className="w-full mt-6 py-4 px-6 rounded-xl font-bold text-white text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
+                className="w-full mt-6 py-4 px-6 max-md:px-2 rounded-xl font-bold text-white text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
                 whileHover={{ y: -2, scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
               >
                 Garanta Sua Vaga Agora
               </motion.button>
               
-              <div className="mt-4 flex items-center justify-center gap-2 text-sm text-purple-600">
+              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-purple-600">
                 <FaWhatsapp className="text-green-500" />
                 <span>Dúvidas? Fale conosco pelo WhatsApp</span>
               </div>
