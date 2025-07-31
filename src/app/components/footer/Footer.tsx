@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ font }) => {
   } as const;
   
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950 text-white pt-20">
+    <footer className="relative overflow-hidden bg-gradient-to-b pb-4 from-gray-900 to-gray-950 text-white pt-20">
       <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5"></div>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-yellow-400 to-pink-500" />
       
