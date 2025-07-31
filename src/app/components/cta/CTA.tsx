@@ -4,6 +4,7 @@ import { Aladin } from 'next/font/google';
 import Link from 'next/link';
 import { theme } from '@/app/theme/theme';
 import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaTicketAlt, FaArrowRight } from 'react-icons/fa';
+import { buttonHover, buttonTap } from '@/app/animations';
 
 interface CTAProps {
   font: {
@@ -24,10 +25,10 @@ const container = {
 };
 
 const fadeInUp = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 30,
-    scale: 0.98 
+    scale: 0.98
   },
   visible: {
     opacity: 1,
@@ -43,9 +44,9 @@ const fadeInUp = {
 };
 
 const fadeIn = {
-  hidden: { 
+  hidden: {
     opacity: 0,
-    scale: 0.95 
+    scale: 0.95
   },
   visible: {
     opacity: 1,
@@ -59,18 +60,18 @@ const fadeIn = {
 
 // Botão primário - Estilo e animação
 const primaryButton = {
-  initial: { 
-    boxShadow: '0 4px 14px 0 rgba(0,0,0,0.1)' 
+  initial: {
+    boxShadow: '0 4px 14px 0 rgba(0,0,0,0.1)'
   },
-  hover: { 
+  hover: {
     y: -2,
     boxShadow: '0 6px 20px rgba(0,0,0,0.16)',
-    transition: { 
+    transition: {
       duration: 0.2,
       ease: 'easeOut'
     }
   },
-  tap: { 
+  tap: {
     y: 1,
     scale: 0.99,
     boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
@@ -79,19 +80,19 @@ const primaryButton = {
 
 // Botão secundário - Estilo e animação
 const secondaryButton = {
-  initial: { 
-    background: 'rgba(255,255,255,0.05)' 
+  initial: {
+    background: 'rgba(255,255,255,0.05)'
   },
-  hover: { 
+  hover: {
     y: -2,
     background: 'rgba(255,255,255,0.1)',
     boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
-    transition: { 
+    transition: {
       duration: 0.2,
       ease: 'easeOut'
     }
   },
-  tap: { 
+  tap: {
     y: 1,
     scale: 0.99
   }
@@ -112,9 +113,9 @@ const cardHover = {
 
 const CTA: React.FC<CTAProps> = ({ font }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
-    <section 
+    <section
       className="relative overflow-hidden py-24 md:py-32"
       style={{
         background: `linear-gradient(135deg, ${theme.colors.primary} 0%, ${theme.colors.dark} 100%), url('/images/cta-bg.jpg') center/cover no-repeat`,
@@ -129,8 +130,8 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
           backgroundSize: '800px'
         }}
       />
-      
-      <motion.div 
+
+      <motion.div
         className="container mx-auto px-4 relative z-10"
         variants={container}
         initial="hidden"
@@ -138,13 +139,13 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
         viewport={{ once: true, margin: '-100px' }}
         custom={0.5}
       >
-        <motion.div 
+        <motion.div
           className="max-w-5xl mx-auto text-center"
           variants={fadeInUp}
         >
-          <motion.h2 
+          <motion.h2
             className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${font.className}`}
-            style={{ 
+            style={{
               color: theme.colors.secondary,
               textShadow: '0 2px 10px rgba(0,0,0,0.2)'
             }}
@@ -153,8 +154,8 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
             Pronto para Viver Essa{' '}
             <span className="text-yellow-300">Experiência Mágica</span>?
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
@@ -163,58 +164,54 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               Promoção especial por tempo limitado! 🎉
             </span>
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             variants={fadeInUp}
           >
-            <motion.a
-              href="#ingressos"
-              className="relative group px-8 py-5 rounded-full font-bold text-lg transition-all duration-300 overflow-hidden inline-flex items-center justify-center"
-              style={{
-                background: `linear-gradient(45deg, ${theme.colors.secondary}, #f9d423)`,
-                color: theme.colors.dark,
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-              }}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              variants={primaryButton}
-              transition={{ duration: 0.2 }}
+            <motion.button
+              className="relative overflow-hidden group bg-gradient-to-r from-yellow-400 to-yellow-600 text-purple-900 font-bold py-4 px-8 rounded-full text-lg shadow-lg"
+              whileHover={buttonHover}
+              whileTap={buttonTap}
             >
-              <span className="relative z-10 max-md:text-sm flex items-center">
-                Garantir Minha Vaga Agora
-                <FaArrowRight className="ml-3 transition-transform group-hover:translate-x-1" />
-              </span>
-              <div className="absolute inset-0  bg-gradient-to-r from-yellow-400 to-yellow-200 opacity-0 group-hover:opacity-20 transition-opacity duration-200" />
-            </motion.a>
-            
-            <motion.a
-              href="#contato"
-              className="group relative px-8 py-5 max-md:text-sm rounded-full font-bold text-lg transition-all duration-300 overflow-hidden inline-flex items-center justify-center border-2"
+              <Link href="#ingressos">
+                <span className="relative z-10 max-md:text-sm flex items-center">
+                  Garantir Minha Vaga Agora
+                  <FaArrowRight className="ml-3 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+            </motion.button>
+            <motion.button
+              className="relative overflow-hidden group border-2  font-semibold py-4 px-12 rounded-full text-lg"
               style={{
                 borderColor: theme.colors.secondary,
                 color: theme.colors.secondary,
                 background: 'rgba(255,255,255,0.05)',
                 backdropFilter: 'blur(10px)'
               }}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              variants={secondaryButton}
-              transition={{ duration: 0.2 }}
+              whileHover={{
+                ...buttonHover,
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              }}
+              whileTap={buttonTap}
             >
-              <FaWhatsapp className="mr-3 text-xl " />
-              Falar pelo WhatsApp
-              <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-200" />
-            </motion.a>
+              <Link href="#sobre">
+                <span
+
+                  className="relative z-10 max-md:text-sm  flex items-center">
+                  <FaWhatsapp className="mr-3 text-xl " />
+                  Falar pelo WhatsApp</span>
+              </Link>
+              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+            </motion.button>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
             variants={container}
           >
-            <motion.div 
+            <motion.div
               className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 group"
               variants={fadeInUp}
               whileHover={cardHover.hover}
@@ -228,8 +225,8 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
                 <p className="text-sm text-white/60 mt-1">Tempo perfeito para uma experiência inesquecível</p>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 group"
               variants={fadeInUp}
               whileHover={cardHover.hover}
@@ -239,12 +236,12 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               </div>
               <div className="text-left">
                 <h4 className="text-yellow-400 font-bold text-lg mb-1">Data</h4>
-                <p className="text-white/90">23 de Novembro de 2025</p>
-                <p className="text-sm text-white/60 mt-1">Sábado às 19:30h - Chegue 30min antes</p>
+                <p className="text-white/90">Domingo, 23 de Novembro de 2025</p>
+                <p className="text-sm text-white/60 mt-1">Chegue 30 minutos antes</p>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 group"
               variants={fadeInUp}
               whileHover={cardHover.hover}
@@ -255,24 +252,24 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               <div className="text-left">
                 <h4 className="text-yellow-400 font-bold text-lg mb-1">Local</h4>
                 <p className="text-white/90">Centro Cultural Pio XII</p>
-                <p className="text-sm text-white/60 mt-1">Rua Exemplo, 123 - Centro, Cidade/SP</p>
+                <p className="text-sm text-white/60">Rua Alvarenga Peixoto, 1679, Santo Agostinho</p>
               </div>
             </motion.div>
           </motion.div>
         </motion.div>
       </motion.div>
-      
+
       {/* Decorative elements */}
-      <div 
+      <div
         className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"
       />
-      <div 
+      <div
         className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"
       />
-      
+
       {/* Subtle gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 -left-16 w-64 h-64 rounded-full pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.15 }}
@@ -282,8 +279,8 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
             filter: 'blur(50px)',
           }}
         />
-        
-        <motion.div 
+
+        <motion.div
           className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.1 }}

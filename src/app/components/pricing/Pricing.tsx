@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar, FaWhatsapp } from 'react-icons/fa';
 import { theme } from '@/app/theme/theme';
+import { buttonHover, buttonTap } from '@/app/animations';
 
 // Animation variants
 const fadeIn = (direction: string = 'up', delay: number = 0) => ({
@@ -250,8 +251,8 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               
               <motion.button 
                 className="w-full mt-6 py-4 px-6 max-md:px-2 rounded-xl font-bold text-white text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
-                whileHover={{ y: -2, scale: 1.01 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={buttonHover}
+                whileTap={buttonTap}
               >
                 Garanta Sua Vaga Agora
               </motion.button>

@@ -58,12 +58,12 @@ const cardTap = {
 
 // Mock gallery images
 const galleryImages = [
-  { id: 1, src: '/images/gallery/1.jpg', alt: 'Cena do espetáculo', category: 'performance' },
-  { id: 2, src: '/images/gallery/2.jpg', alt: 'Ensaios', category: 'rehearsal' },
-  { id: 3, src: '/images/gallery/3.jpg', alt: 'Bailarinas em cena', category: 'performance' },
-  { id: 4, src: '/images/gallery/4.jpg', alt: 'Cenografia', category: 'scenery' },
-  { id: 5, src: '/images/gallery/5.jpg', alt: 'Figurinos', category: 'costumes' },
-  { id: 6, src: '/images/gallery/6.jpg', alt: 'Momento mágico', category: 'performance' },
+  { id: 1, src: '/imagens/2024/1.webp', alt: 'Cena do espetáculo', category: 'performance' },
+  { id: 2, src: '/imagens/2024/2.webp', alt: 'Ensaios', category: 'rehearsal' },
+  { id: 3, src: '/imagens/2024/3.webp', alt: 'Bailarinas em cena', category: 'performance' },
+  { id: 4, src: '/imagens/2024/4.webp', alt: 'Cenografia', category: 'scenery' },
+  { id: 5, src: '/imagens/2024/5.webp', alt: 'Figurinos', category: 'costumes' },
+  { id: 6, src: '/imagens/2024/6.webp', alt: 'Momento mágico', category: 'performance' },
 ];
 
 const categories = [
@@ -113,15 +113,18 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <h2 className={`${font.className} text-4xl md:text-5xl font-bold text-white mb-4`}>
+          <h2 className={`${font.className} text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4`}>
             Galeria de Fotos
           </h2>
           <p className="text-lg text-purple-200 max-w-2xl mx-auto">
             Confira os melhores momentos do espetáculo e por trás das cenas.
+            <span className="block mt-3 text-yellow-200 font-medium">
+              Evento realizado em 2024 - Tema "A bela adormecida"
+            </span>
           </p>
         </motion.div>
 
-        {/* Category Filters */}
+        {/* Category Filters
         <motion.div 
           className="flex flex-wrap justify-center gap-3 mb-12"
           variants={fadeIn('up', 0.2)}
@@ -144,7 +147,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
               {category.name}
             </motion.button>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Image Grid */}
         <AnimatePresence mode="wait">
@@ -175,14 +178,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
                     className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <div className="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-xl font-bold mb-1">{image.alt}</h3>
-                    <p className="text-purple-200 text-sm">
-                      {categories.find(c => c.id === image.category)?.name}
-                    </p>
-                  </div>
-                </div>
+            
               </motion.div>
             ))}
           </motion.div>

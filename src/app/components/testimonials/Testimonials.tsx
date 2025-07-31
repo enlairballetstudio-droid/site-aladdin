@@ -104,21 +104,21 @@ const Testimonials: React.FC<TestimonialsProps> = ({ font }) => {
     {
       name: 'Ana Clara',
       role: 'Mãe da Sofia',
-      avatar: '/images/testimonials/1.jpg',
+      avatar: 'https://avatar.iran.liara.run/public/girl',
       content: 'Ver minha filha brilhar no palco foi uma das melhores experiências da nossa vida. A produção foi impecável e a alegria dela não tem preço!',
       rating: 5
     },
     {
       name: 'Carlos Eduardo',
       role: 'Pai da Laura',
-      avatar: '/images/testimonials/2.jpg',
+      avatar: 'https://avatar.iran.liara.run/public/boy',
       content: 'A dedicação da equipe do En L\'air é impressionante. Minha filha se desenvolveu muito e o espetáculo foi mágico, superou todas as expectativas!',
       rating: 5
     },
     {
       name: 'Mariana Santos',
       role: 'Ex-aluna',
-      avatar: '/images/testimonials/3.jpg',
+      avatar: 'https://avatar.iran.liara.run/public/girl',
       content: 'Participar do espetáculo foi transformador. Aprendi muito, fiz amizades incríveis e levo essa experiência para toda a vida. Recomendo muito!',
       rating: 5
     },
