@@ -220,7 +220,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
                 <FaClock />
               </div>
               <div className="text-left">
-                <h4 className="text-yellow-400 font-bold text-lg mb-1">Duração</h4>
+                <p className="text-yellow-400 font-bold text-lg mb-1">Duração</p>
                 <p className="text-white/90">2 Horas de Pura Magia</p>
                 <p className="text-sm text-white/60 mt-1">Tempo perfeito para uma experiência inesquecível</p>
               </div>
@@ -235,7 +235,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
                 <FaTicketAlt />
               </div>
               <div className="text-left">
-                <h4 className="text-yellow-400 font-bold text-lg mb-1">Data</h4>
+                <p className="text-yellow-400 font-bold text-lg mb-1">Data</p>
                 <p className="text-white/90">Domingo, 23 de Novembro de 2025</p>
                 <p className="text-sm text-white/60 mt-1">Chegue 30 minutos antes</p>
               </div>
@@ -250,7 +250,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
                 <FaMapMarkerAlt />
               </div>
               <div className="text-left">
-                <h4 className="text-yellow-400 font-bold text-lg mb-1">Local</h4>
+                <p className="text-yellow-400 font-bold text-lg mb-1">Local</p>
                 <p className="text-white/90">Centro Cultural Pio XII</p>
                 <p className="text-sm text-white/60">Rua Alvarenga Peixoto, 1679, Santo Agostinho</p>
               </div>

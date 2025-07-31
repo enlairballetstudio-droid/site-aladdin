@@ -117,9 +117,9 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
             Galeria de Fotos
           </h2>
           <p className="text-lg text-purple-200 max-w-2xl mx-auto">
-            Confira os melhores momentos do espetáculo e por trás das cenas.
+          Evento realizado em 2024
             <span className="block mt-3 text-yellow-200 font-medium">
-              Evento realizado em 2024 - Tema "A bela adormecida"
+              Tema "A bela adormecida"
             </span>
           </p>
         </motion.div>

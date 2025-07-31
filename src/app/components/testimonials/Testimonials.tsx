@@ -47,7 +47,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, c
           />
         </motion.div>
         <div>
-          <h4 className="font-bold text-lg text-purple-900">{name}</h4>
+          <p className="font-bold text-lg text-purple-900">{name}</p>
           <p className="text-gray-600 text-sm">{role}</p>
         </div>
       </div>

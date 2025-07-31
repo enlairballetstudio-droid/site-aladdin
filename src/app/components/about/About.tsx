@@ -176,11 +176,11 @@ const About: React.FC<AboutProps> = ({ font }) => {
                 viewport={{ once: true }}
               >
                 <div className="flex items-start gap-5">
-                  <div className="text-4xl text-yellow-400">✨</div>
+                  <div className="text-4xl text-yellow-400 max-md:hidden">✨</div>
                   <div>
-                    <h3 className="font-bold text-xl md:text-2xl mb-3 bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+                    <p className="font-bold text-xl md:text-2xl mb-3 bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
                       Espetáculo 2025
-                    </h3>
+                    </p>
                     <p className="text-gray-700 leading-relaxed">
                       Ver na plateia quem elas amam faz o coração bater como um tapete voador: 
                       leve, mágico e cheio de emoção. Em meio à magia de Aladdin e Jasmine, 
@@ -204,10 +204,10 @@ const About: React.FC<AboutProps> = ({ font }) => {
                   className="bg-white p-6 rounded-2xl shadow-lg border border-purple-50 hover:shadow-xl transition-shadow duration-300"
                   whileHover={{ y: -5 }}
                 >
-                  <h4 className="font-bold text-purple-800 mb-3 text-lg">QUANDO SERÁ?</h4>
+                  <p className="font-bold text-purple-800 mb-3 text-lg">QUANDO SERÁ?</p>
                   <p className="text-lg text-gray-800">
                     <span className="block text-2xl font-bold text-purple-600 mb-1">Domingo</span>
-                    <span className="text-xl font-semibold">23 de novembro de 2025</span>
+                    <span className="text-gray-700 ">23 de novembro de 2025</span>
                   </p>
                 </motion.div>
                 
@@ -215,9 +215,9 @@ const About: React.FC<AboutProps> = ({ font }) => {
                   className="bg-white p-6 rounded-2xl shadow-lg border border-purple-50 hover:shadow-xl transition-shadow duration-300"
                   whileHover={{ y: -5 }}
                 >
-                  <h4 className="font-bold text-purple-800 mb-3 text-lg">ONDE SERÁ?</h4>
+                  <p className="font-bold text-purple-800 mb-3 text-lg">ONDE SERÁ?</p>
                   <div className="space-y-1">
-                    <p className="text-xl font-semibold text-purple-600">Centro Cultural Pio XII</p>
+                    <p className="text-2xl font-bold text-purple-600">Centro Cultural Pio XII</p>
                     <p className="text-gray-700">Rua Alvarenga Peixoto, 1679</p>
                     <p className="text-gray-600">Santo Agostinho</p>
                   </div>

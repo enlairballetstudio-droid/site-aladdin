@@ -4,7 +4,7 @@
   "private": true,
   "description": "Site do espetáculo 'A Magia de Aladdin e Jasmine' do En L'air Centro de Dança",
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

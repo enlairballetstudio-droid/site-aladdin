@@ -163,8 +163,8 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
           </motion.div>
           
           <h2 
-            className={`text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600`}
-            style={{ fontFamily: font.className }}
+            className={`text-4xl md:text-6xl font-aladin mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600`}
+
           >
             Quer Ter Memórias Inesquecíveis?
           </h2>
@@ -205,9 +205,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 
               </div>
               
-              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <p className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Tudo Incluído para Você Brilhar
-              </h3>
+              </p>
               
               <motion.ul 
                 className="space-y-4 mb-8"
@@ -269,7 +269,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
             className="space-y-6"
             variants={item}
           >
-            <h3 className="text-2xl font-bold text-gray-800">Tudo que está incluso:</h3>
+            <p className="text-2xl font-bold text-gray-800">Tudo que está incluso:</p>
             {includedItems.map((item, index) => (
               <motion.div
                 key={index}
@@ -277,10 +277,10 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 variants={fadeIn('right', index * 0.1)}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="text-2xl">{item.icon}</div>
                   <div>
-                    <h4 className="font-bold text-lg text-gray-800">{item.title}</h4>
+                    <p className="font-bold text-lg text-gray-800">{item.title}</p>
                     <p className="text-gray-600">{item.description}</p>
                   </div>
                 </div>
