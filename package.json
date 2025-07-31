@@ -1,0 +1,62 @@
+{
+  "name": "enlair-danca-aladdin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site do espetáculo 'A Magia de Aladdin e Jasmine' do En L'air Centro de Dança",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-types": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^20.11.25",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.21",
+    "autoprefixer": "^10.4.17",
+    "clsx": "^2.1.0",
+    "framer-motion": "^11.0.8",
+    "moment": "^2.30.1",
+    "next": "^14.2.31",
+    "next-seo": "^6.6.0",
+    "postcss": "^8.4.33",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-intersection-observer": "^9.5.3",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/react-slick": "^0.23.13",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.10"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
