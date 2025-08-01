@@ -208,23 +208,10 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
           </motion.div>
 
           <motion.div
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto"
+            className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
             variants={container}
           >
-            <motion.div
-              className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 group"
-              variants={fadeInUp}
-              whileHover={cardHover.hover}
-            >
-              <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center text-yellow-400 text-xl bg-yellow-400/10 group-hover:bg-yellow-400/20 transition-colors">
-                <FaClock />
-              </div>
-              <div className="text-left">
-                <p className="text-yellow-400 font-bold text-lg mb-1">Duração</p>
-                <p className="text-white/90">2 Horas de Pura Magia</p>
-                <p className="text-sm text-white/60 mt-1">Tempo perfeito para uma experiência inesquecível</p>
-              </div>
-            </motion.div>
+            
 
             <motion.div
               className="flex items-start gap-4 bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all duration-300 group"
@@ -237,7 +224,6 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               <div className="text-left">
                 <p className="text-yellow-400 font-bold text-lg mb-1">Data</p>
                 <p className="text-white/90">Domingo, 23 de Novembro de 2025</p>
-                <p className="text-sm text-white/60 mt-1">Chegue 30 minutos antes</p>
               </div>
             </motion.div>
 

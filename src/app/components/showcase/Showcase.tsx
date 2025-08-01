@@ -56,23 +56,7 @@ const cardTap = {
   },
 };
 
-// Mock gallery images
-const galleryImages = [
-  { id: 1, src: '/imagens/2024/1.webp', alt: 'Cena do espetáculo', category: 'performance' },
-  { id: 2, src: '/imagens/2024/2.webp', alt: 'Ensaios', category: 'rehearsal' },
-  { id: 3, src: '/imagens/2024/3.webp', alt: 'Bailarinas em cena', category: 'performance' },
-  { id: 4, src: '/imagens/2024/4.webp', alt: 'Cenografia', category: 'scenery' },
-  { id: 5, src: '/imagens/2024/5.webp', alt: 'Figurinos', category: 'costumes' },
-  { id: 6, src: '/imagens/2024/6.webp', alt: 'Momento mágico', category: 'performance' },
-];
 
-const categories = [
-  { id: 'all', name: 'Todas' },
-  { id: 'performance', name: 'Apresentações' },
-  { id: 'rehearsal', name: 'Ensaios' },
-  { id: 'scenery', name: 'Cenários' },
-  { id: 'costumes', name: 'Figurinos' },
-];
 
 interface GalleryImageType {
   id: number;
@@ -91,9 +75,6 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedImage, setSelectedImage] = useState<GalleryImageType | null>(null);
 
-  const filteredImages = activeCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(image => image.category === activeCategory);
 
   const handleImageClick = (image: GalleryImageType) => {
     setSelectedImage(image);
@@ -104,7 +85,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-900 to-purple-700 text-white">
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -159,20 +140,25 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
             animate="show"
             exit="hidden"
           >
-            {filteredImages.map((image) => (
+            {Array.from({ length: 16 }).map((_, index) => (
               <motion.div 
-                key={image.id}
+                key={index}
                 className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 variants={fadeIn('up')}
                 whileHover={cardHover}
                 whileTap={cardTap}
-                onClick={() => handleImageClick(image)}
+                onClick={() => handleImageClick({
+                  id: index,
+                  src: `/imagens/2024/${index + 1}.webp`,
+                  alt: `Imagem ${index + 1}`,
+                  category: 'performance',
+                })}
                 layout
               >
                 <div className="aspect-w-16 aspect-h-9 bg-purple-100 rounded-2xl overflow-hidden">
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={`/imagens/2024/${index + 1}.webp`}
+                    alt={`Imagem ${index + 1}`}
                     width={600}
                     height={400}
                     className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"

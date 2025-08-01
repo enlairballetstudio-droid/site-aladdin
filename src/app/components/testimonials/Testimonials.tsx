@@ -31,11 +31,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, c
       whileInView="show"
       viewport={{ once: true, margin: "-50px" }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative z-10">
       <div className="flex items-center gap-4 mb-6">
         <motion.div 
-          className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-yellow-400"
+          className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-400"
           whileHover={{ rotate: 5, scale: 1.05 }}
         >
           <Image 
@@ -47,7 +47,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, c
           />
         </motion.div>
         <div>
-          <p className="font-bold text-lg text-purple-900">{name}</p>
+          <p className="font-bold text-lg text-blue-900">{name}</p>
           <p className="text-gray-600 text-sm">{role}</p>
         </div>
       </div>
@@ -164,7 +164,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ font }) => {
           variants={textVariant(0.2)}
         >
           <motion.h2 
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${font.className} text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500`}
+            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${font.className} text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ 
               opacity: 1, 

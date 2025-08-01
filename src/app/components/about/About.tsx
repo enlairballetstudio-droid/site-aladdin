@@ -9,6 +9,8 @@ import {
   cardHover,
   cardTap
 } from '@/app/animations';
+import { HiOutlineLocationMarker, HiOutlineCalendar } from "react-icons/hi";
+import { useEffect, useState } from 'react';
 
 // Importe as imagens
 const showcaseImg = '/imagens/about.webp';
@@ -20,6 +22,23 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ font }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if the device is touch-enabled (mobile/tablet)
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add resize listener for responsive behavior
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
   return (
     <section 
       id="sobre" 
@@ -66,10 +85,16 @@ const About: React.FC<AboutProps> = ({ font }) => {
                 className="w-full h-full object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                <h3 className="text-2xl font-bold mb-2">Espetáculo 2025</h3>
-                <p className="text-purple-100">Uma experiência inesquecível de dança</p>
+              <div className={`absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent transition-opacity duration-500 ${
+                isMobile ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              }`} />
+              <div className={`absolute bottom-0 left-0 right-0 p-6 text-white transition-all duration-500 ${
+                isMobile 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0'
+              }`}>
+                <h3 className="text-2xl font-bold mb-2">Espetáculo 2024</h3>
+                <p className="text-purple-100">Tema - A bela adormecida</p>
               </div>
             </motion.div>
             
@@ -118,13 +143,13 @@ const About: React.FC<AboutProps> = ({ font }) => {
               }}
               viewport={{ once: true }}
             >
-              <span className="inline-block text-sm font-bold px-6 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-purple-900 shadow-md">
+              <span className="inline-block text-sm font-bold px-6 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 shadow-md">
                 Sobre o Espetáculo
               </span>
             </motion.div>
             
             <motion.h2 
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-8 ${font.className} bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent`}
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-8 ${font.className} text-blue-700`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ 
                 opacity: 1, 
@@ -138,7 +163,7 @@ const About: React.FC<AboutProps> = ({ font }) => {
             
             <div className="space-y-6 text-gray-700">
               <motion.p 
-                className="text-lg md:text-xl text-gray-700 leading-relaxed"
+                className="text-lg  text-gray-700 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ 
                   opacity: 1, 
@@ -151,19 +176,6 @@ const About: React.FC<AboutProps> = ({ font }) => {
                 inteiro de aprendizado, dedicação e superação.
               </motion.p>
               
-              <motion.p 
-                className="text-lg md:text-xl text-gray-700 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0,
-                  transition: { duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }
-                }}
-                viewport={{ once: true }}
-              >
-                Nossa equipe se empenha em criar uma experiência única e inesquecível para cada bailarina, 
-                proporcionando um momento de encantamento e conquista.
-              </motion.p>
               
               <motion.div 
                 className="bg-white p-8 rounded-2xl shadow-xl mt-10 border border-purple-50"
@@ -178,50 +190,90 @@ const About: React.FC<AboutProps> = ({ font }) => {
                 <div className="flex items-start gap-5">
                   <div className="text-4xl text-yellow-400 max-md:hidden">✨</div>
                   <div>
-                    <p className="font-bold text-xl md:text-2xl mb-3 bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+                    <p className="font-bold text-xl md:text-2xl mb-3 text-blue-700">
                       Espetáculo 2025
                     </p>
                     <p className="text-gray-700 leading-relaxed">
                       Ver na plateia quem elas amam faz o coração bater como um tapete voador: 
-                      leve, mágico e cheio de emoção. Em meio à magia de Aladdin e Jasmine, 
-                      cada olhar brilha como um desejo realizado.
+                      leve, mágico e cheio de emoção. 
                     </p>
                   </div>
                 </div>
               </motion.div>
               
               <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ 
                   opacity: 1, 
                   y: 0,
                   transition: { duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }
                 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
               >
+                {/* Data do Evento */}
                 <motion.div 
-                  className="bg-white p-6 rounded-2xl shadow-lg border border-purple-50 hover:shadow-xl transition-shadow duration-300"
-                  whileHover={{ y: -5 }}
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-blue-50 p-4 shadow-2xl border border-blue-100 transform transition-all duration-500 hover:scale-[1.02]"
+                  whileHover={{ boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
                 >
-                  <p className="font-bold text-purple-800 mb-3 text-lg">QUANDO SERÁ?</p>
-                  <p className="text-lg text-gray-800">
-                    <span className="block text-2xl font-bold text-purple-600 mb-1">Domingo</span>
-                    <span className="text-gray-700 ">23 de novembro de 2025</span>
-                  </p>
-                </motion.div>
-                
-                <motion.div 
-                  className="bg-white p-6 rounded-2xl shadow-lg border border-purple-50 hover:shadow-xl transition-shadow duration-300"
-                  whileHover={{ y: -5 }}
-                >
-                  <p className="font-bold text-purple-800 mb-3 text-lg">ONDE SERÁ?</p>
-                  <div className="space-y-1">
-                    <p className="text-2xl font-bold text-purple-600">Centro Cultural Pio XII</p>
-                    <p className="text-gray-700">Rua Alvarenga Peixoto, 1679</p>
-                    <p className="text-gray-600">Santo Agostinho</p>
+                  <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-200 rounded-full opacity-20 -z-0"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-md">
+                        <HiOutlineCalendar className="text-3xl text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
+                        Data do Espetáculo
+                      </h3>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-xl font-bold text-blue-900">23 de Novembro</p>
+                      <p className="text-xl font-semibold text-blue-800">2025</p>
+                      <div className="pt-4 mt-4 border-t border-blue-200">
+                        
+                        <div className='w-full h-[48px] flex items-center mt-auto justify-center border-blue-600 border-2 rounded-2xl px-4'>
+                        <p className="text-blue-600 text-lg font-semibold">Domingo</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
+
+                {/* Local do Evento */}
+                <motion.div 
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 p-4 shadow-2xl border border-blue-100 transform transition-all duration-500 hover:scale-[1.02]"
+                  whileHover={{ boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+                >
+                  <div className="absolute -left-6 -bottom-6 w-40 h-40 bg-blue-200 rounded-full opacity-20 -z-0"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-md">
+                        <HiOutlineLocationMarker className="text-3xl text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
+                        Local do Evento
+                      </h3>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-xl font-bold text-blue-900">Centro Cultural Pio XII                      </p>
+                      <p className="text-blue-800">Rua Alvarenga Peixoto, 1679, Santo Agostinho</p>
+                      <div className="pt-4 mt-4 border-t border-blue-200">
+                        <a 
+                          href="https://www.google.com/maps/place/Teatro+Pio+XII/@-19.9277776,-43.9598811,17z/data=!3m1!4b1!4m6!3m5!1s0xa69768c14a787d:0x9eab0763ac3dbaab!8m2!3d-19.9277776!4d-43.9573062!16s%2Fg%2F1th4bmrj?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center w-full gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-medium shadow-md hover:shadow-lg"
+                        >
+                          <HiOutlineLocationMarker className="text-xl" />
+                          Ver no Mapa
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+               
+                
+               
               </motion.div>
             </div>
           </motion.div>

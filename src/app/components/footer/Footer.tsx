@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ font }) => {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b pb-4 from-gray-900 to-gray-950 text-white pt-20">
       <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5"></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-yellow-400 to-pink-500" />
+      {/* <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-yellow-400 to-pink-500" /> */}
       
       <div className="container mx-auto px-4 pt-32 pb-20 relative">
         <motion.div 
@@ -81,20 +81,17 @@ const Footer: React.FC<FooterProps> = ({ font }) => {
                 whileHover={{ rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
-                  <span className={`text-3xl md:text-4xl ${font.className} text-gray-900`}>E</span>
+                <div className='w-40 h-20 relative'>
+                  <Image
+                    src="/imagens/logo-en.png"
+                    alt="Logo"
+                    fill
+                    className="object-contain"
+                  />
+
                 </div>
               </motion.div>
-              <motion.h2 
-                className={`text-3xl md:text-4xl font-bold ${font.className}`}
-                style={{ 
-                  background: 'linear-gradient(45deg, #f59e0b, #fbbf24)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                En L'air
-              </motion.h2>
+              
             </div>
             <motion.p 
               className="text-gray-300 mb-8 max-w-md text-lg leading-relaxed"
