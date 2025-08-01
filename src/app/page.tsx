@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { Aladin } from 'next/font/google';
 import { theme } from './theme/theme';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { textVariant } from './animations';
 
 // Import components with SSR disabled for better performance
 const Hero = dynamic(() => import('./components/hero/Hero'), { ssr: false });
@@ -36,6 +38,7 @@ export default function Home() {
 
   return (
     <div className={`${aladin.variable} font-sans`}>
+     
       <Hero font={aladin} />
       <About font={aladin} />
       <Showcase font={aladin} />
@@ -43,7 +46,7 @@ export default function Home() {
       <Testimonials font={aladin} />
       <CTA font={aladin} />
       <Footer font={aladin} />
-      
+
       {/* Global styles */}
       <style jsx global>{`
         :root {

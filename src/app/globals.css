@@ -7,6 +7,7 @@
   --foreground: #1A0B35;
   --font-sans: var(--font-poppins);
   --font-display: var(--font-aladin);
+   color-scheme: light;
 }
 
 @layer base {

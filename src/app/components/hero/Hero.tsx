@@ -15,7 +15,7 @@ interface HeroProps {
 export default function Hero({ font }: HeroProps) {
   return (
     <motion.section
-      className="relative min-h-screen flex max-md:py-20 items-center justify-center overflow-hidden bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900"
+      className="relative min-h-screen flex max-md:py-20 items-center justify-center overflow-hidden bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
@@ -181,11 +181,11 @@ export default function Hero({ font }: HeroProps) {
                 }}
               >
                 <Image
-                  src="/imagens/aladin.webp"
+                  src="/imagens/hero.jpg"
                   alt="Aladdin e Jasmine no tapete voador"
-                  width={500}
-                  height={600}
-                  className="w-full h-auto object-cover"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-cover aspect-square object-[50%_40%]"
                   priority
                 />
                 <div className="absolute inset-0  bg-gradient-to-t  from-purple-900 via-transparent to-transparent opacity-80"></div>
