@@ -250,7 +250,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
               
               <p className="text-2xl font-bold mb-6 text-center text-gray-800">
-                Aproveite o desconto de 10%
+                Pagamento à vista
               </p>
               
               <motion.div 
@@ -261,11 +261,12 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 transition={{ delay: 0.2 }}
               >
                 <div className="text-center">
+
                   <div className="text-5xl max-md:text-4xl font-bold mb-2 text-green-700">
-                    R$ 717,30
+                    R$ 797,00
                   </div>
                   <p className="text-green-600 text-sm line-through mb-1">
-                    De: R$ 797,00
+                    De: R$ 997,00
                   </p>
                   <p className="text-green-800 text-sm font-semibold mb-4">
                     Economize R$ 79,70
@@ -339,9 +340,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 </div>
                 
               </motion.div>
-              <div className=" rounded-lg p-3 mt-4">
-                    
-                  </div>
+              
               <motion.button 
                 className="w-full mt-6 py-4 px-6 rounded-xl font-bold text-white text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
                 whileHover={buttonHover}
