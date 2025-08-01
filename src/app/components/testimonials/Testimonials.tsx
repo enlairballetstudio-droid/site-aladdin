@@ -115,13 +115,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ font }) => {
       content: 'A dedicação da equipe do En L\'air é impressionante. Minha filha se desenvolveu muito e o espetáculo foi mágico, superou todas as expectativas!',
       rating: 5
     },
-    {
-      name: 'Mariana Santos',
-      role: 'Ex-aluna',
-      avatar: 'https://avatar.iran.liara.run/public/girl',
-      content: 'Participar do espetáculo foi transformador. Aprendi muito, fiz amizades incríveis e levo essa experiência para toda a vida. Recomendo muito!',
-      rating: 5
-    },
+
   ];
 
   return (
@@ -189,7 +183,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ font }) => {
           </motion.p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-[900px] mx-auto lg:grid-cols-2 gap-8 relative z-10">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={testimonial.name} {...testimonial} index={index} />
           ))}

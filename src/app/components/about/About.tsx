@@ -229,10 +229,9 @@ const About: React.FC<AboutProps> = ({ font }) => {
                     <div className="space-y-3">
                       <p className="text-xl font-bold text-blue-900">23 de Novembro</p>
                       <p className="text-xl font-semibold text-blue-800">2025</p>
-                      <div className="pt-4 mt-4 border-t border-blue-200">
-                        
-                        <div className='w-full h-[48px] flex items-center mt-auto justify-center border-blue-600 border-2 rounded-2xl px-4'>
-                        <p className="text-blue-600 text-lg font-semibold">Domingo</p>
+                      <div className="mt-auto pt-4 border-t border-blue-200">
+                        <div className='w-full h-[48px] flex items-center justify-center border-blue-600 border-2 rounded-2xl px-4 mt-4'>
+                          <p className="text-blue-600 text-lg font-semibold">Domingo</p>
                         </div>
                       </div>
                     </div>

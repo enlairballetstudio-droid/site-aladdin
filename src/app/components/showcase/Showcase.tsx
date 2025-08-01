@@ -140,7 +140,7 @@ const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
             animate="show"
             exit="hidden"
           >
-            {Array.from({ length: 16 }).map((_, index) => (
+            {Array.from({ length: 15 }).map((_, index) => (
               <motion.div 
                 key={index}
                 className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
