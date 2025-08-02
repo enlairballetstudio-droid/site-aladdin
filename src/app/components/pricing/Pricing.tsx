@@ -45,30 +45,41 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
   
   const features = [
-    { 
-      text: 'Figurino Autêntico do personagem da turma',
+    {
+      text: 'Experiência Completa',
+      description: 'Desde os ensaios até a apresentação, momentos únicos que geram memórias afetivas e positivas.',
+      icon: '🌟',
+      bgColor: 'bg-gradient-to-br from-purple-500 to-blue-600'
+    },
+    {
+      text: 'Figurino Autêntico',
+      description: '01 figurino autêntico do personagem da turma, confeccionado 1 a 1 por nossa equipe de fadas costureiras, com adereços de cabelo.',
       icon: '👗',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-pink-500 to-blue-600'
     },
-    { 
-      text: 'Confeccionado 1 a 1 por nossa equipe de fadas costureiras',
-      icon: '🧵',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600'
-    },
-    { 
-      text: 'Adereço de cabelo',
-      icon: '👑',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600'
-    },
-    { 
-      text: 'Apresentação no palco profissional',
+    {
+      text: 'Apresentação encantadora',
+      description: 'Apresentação no palco profissional, com produção digna de Superstar.',
       icon: '🎭',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-700'
     },
-    { 
-      text: 'Produção digna de Superstar',
-      icon: '✨',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-600'
+    {
+      text: 'Vídeo Memorável',
+      description: 'Guarde pra sempre registros dessa experiência única que gera valor para as outras gerações.',
+      icon: '🎥',
+      bgColor: 'bg-gradient-to-br from-yellow-400 to-blue-600'
+    },
+    {
+      text: 'T-Shirt Espetáculo',
+      description: 'Uma T-Shirt exclusiva para entrar no clima e ficar na moda En L\'air Aladdim.',
+      icon: '👕',
+      bgColor: 'bg-gradient-to-br from-green-400 to-blue-600'
+    },
+    {
+      text: '2 Ingressos Garantidos',
+      description: 'Dois ingressos inclusos para garantir que papai e mamãe tenham seus lugares reservados e possam prestigiar esse momento especial bem de perto.',
+      icon: '🎟️',
+      bgColor: 'bg-gradient-to-br from-orange-400 to-blue-500'
     }
   ];
 
@@ -92,15 +103,27 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
       bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
     },
     {
+      title: 'Bailarino Contratado',
+      description: 'Bailarino para a apresentação.',
+      icon: '🩰',
+      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+    },
+    {
       title: 'Segurança',
       description: 'Evento tranquilo e seguro',
       icon: '🛡️',
       bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
     },
     {
-      title: 'Vídeo Memorável',
-      description: 'Gravação profissional',
-      icon: '🎥',
+      title: 'Vídeo Maker Profissional',
+      description: 'Registro em vídeo de alta qualidade.',
+      icon: '🎬',
+      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+    },
+    {
+      title: 'Fotógrafo Profissional',
+      description: 'Para eternizar cada momento do evento.',
+      icon: '📸',
       bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
     },
     {
@@ -108,13 +131,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
       description: 'Tudo em conformidade',
       icon: '📝',
       bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
-    },
-    {
-      title: 'Ator ou Atriz Contratado(a)',
-      description: 'Performance profissional para o espetáculo',
-      icon: '🎭',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
-    },
+    }
   ];
 
   // Animation variants
@@ -359,89 +376,41 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
           {/* Features Section */}
           <div className="mt-16 col-span-2 w-full max-w-[900px] mx-auto">
             <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
-              O Que Está Incluso no Seu Pacote
+              O Que Está Incluso no Seu Kit
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  {/* Primeiro Card: três primeiros itens */}
-  <motion.div
-    className="relative overflow-hidden group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 h-full"
-    variants={fadeIn('up', 0)}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, margin: "-50px" }}
-    whileHover={{ 
-      y: -8,
-      scale: 1.02,
-      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-    }}
-  >
-    <div className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-    <div className="relative z-10 w-full flex flex-col gap-4">
-      {[0,1,2].map(i => (
-        <div key={i} className="flex items-center gap-4">
-          <div 
-            className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white`}
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-            }}
-          >
-            <span className="drop-shadow-md">{features[i].icon}</span>
-          </div>
-          <p className="text-gray-700 group-hover:text-gray-900 transition-colors font-medium text-left mt-1">
-            {features[i].text}
-          </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={idx}
+              className="relative overflow-hidden group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 h-full flex flex-col items-center text-center"
+              variants={fadeIn('up', idx * 0.08)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                y: -8,
+                scale: 1.02,
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+              }}
+            >
+              <div className={`absolute inset-0 ${feature.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+              <div className="relative z-10 w-full flex flex-col items-center gap-2">
+                <div 
+                  className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-3xl transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 ${feature.bgColor} text-white mb-2`}
+                  style={{
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                  }}
+                >
+                  <span className="drop-shadow-md">{feature.icon}</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-lg text-gray-800 mb-1">{feature.text}</p>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      ))}
-    </div>
-  </motion.div>
-
-  {/* Segundo Card: dois últimos itens */}
-  <motion.div
-    className="relative overflow-hidden group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100 h-full"
-    variants={fadeIn('up', 0.1)}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, margin: "-50px" }}
-    whileHover={{ 
-      y: -8,
-      scale: 1.02,
-      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-    }}
-  >
-    <div className={`absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-    <div className="relative z-10 w-full flex flex-col gap-4">
-      {[3,4].map(i => (
-        <div key={i} className="flex items-center gap-4">
-          <div 
-            className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white`}
-            style={{
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-            }}
-          >
-            <span className="drop-shadow-md">{features[i].icon}</span>
-          </div>
-          <p className="text-gray-700 group-hover:text-gray-900 transition-colors font-medium text-left mt-1">
-            {features[i].text}
-          </p>
-        </div>
-      ))}
-      {/* Vídeo memorável */}
-      <div className="flex items-center gap-4">
-        <div 
-          className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 transform group-hover:scale-110 group-hover:-rotate-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white`}
-          style={{
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-          }}
-        >
-          <span className="drop-shadow-md">🎥</span>
-        </div>
-        <p className="text-gray-700 group-hover:text-gray-900 transition-colors font-medium text-left mt-1">
-          Vídeo memorável
-        </p>
-      </div>
-    </div>
-  </motion.div>
-</div>
           </div>
           
         </motion.div>
