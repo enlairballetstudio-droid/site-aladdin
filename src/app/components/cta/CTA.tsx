@@ -196,7 +196,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               }}
               whileTap={buttonTap}
             >
-              <Link href="#sobre">
+              <Link href="https://wa.me/5531997777994" target="_blank">
                 <span
 
                   className="relative z-10 max-md:text-sm  flex items-center">

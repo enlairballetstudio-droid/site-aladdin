@@ -222,9 +222,9 @@ const About: React.FC<AboutProps> = ({ font }) => {
                       <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-md">
                         <HiOutlineCalendar className="text-3xl text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
+                      <p className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
                         Data do Espetáculo
-                      </h3>
+                      </p>
                     </div>
                     <div className="space-y-3">
                       <p className="text-xl font-bold text-blue-900">23 de Novembro</p>
@@ -249,9 +249,9 @@ const About: React.FC<AboutProps> = ({ font }) => {
                       <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-md">
                         <HiOutlineLocationMarker className="text-3xl text-white" />
                       </div>
-                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
+                      <p className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
                         Local do Evento
-                      </h3>
+                      </p>
                     </div>
                     <div className="space-y-3">
                       <p className="text-xl font-bold text-blue-900">Centro Cultural Pio XII                      </p>

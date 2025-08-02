@@ -25,8 +25,11 @@ export default function PremiumGallery({ font }: ShowcaseProps) {
     <section className="py-20 bg-white overflow-hidden relative">
       <div>
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl tracking-wide text-blue-600 mb-4 ${font.className}`}>
+          <h2 className={`text-4xl max-md:hidden md:text-5xl tracking-wide text-blue-600 mb-4 ${font.className}`}>
             Making Of - Espetáculo 2024
+          </h2>
+          <h2 className={`text-4xl md:hidden md:text-5xl whitespace-pre-line tracking-wide text-blue-600 mb-4 ${font.className}`}>
+            Making Of {"\n"} Espetáculo 2024
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Tema - A bela adormecida
