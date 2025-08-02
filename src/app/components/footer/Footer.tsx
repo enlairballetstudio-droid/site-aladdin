@@ -125,7 +125,7 @@ const Footer: React.FC<FooterProps> = ({ font }) => {
           <motion.div variants={item}>
             
             <motion.ul 
-              className="space-y-3 max-md:hidden"
+              className="space-y-3 hidden"
               variants={container}
             >
               {['Início', 'Sobre', 'Modalidades', 'Horários', 'Contato'].map((link) => (
