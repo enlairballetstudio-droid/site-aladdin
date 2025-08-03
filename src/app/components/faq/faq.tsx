@@ -97,7 +97,7 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 px-4 max-w-4xl mx-auto" id="faq">
+    <section className="py-16 px-4 max-w-7xl mx-auto" id="faq">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
