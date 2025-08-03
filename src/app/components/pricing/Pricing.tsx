@@ -236,7 +236,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
            Em 2025 evoluímos a experiência, para você desfrutar o melhor do nosso espetáculo. 
           </p>
           <p className="text-xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
-            O Que Está Incluso no Seu Kit
+            Kit Aladin 2025
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {features.map((feature, idx) => (

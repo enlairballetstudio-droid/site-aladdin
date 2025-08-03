@@ -16,6 +16,7 @@ const Testimonials = dynamic(() => import('./components/testimonials/Testimonial
 const CTA = dynamic(() => import('./components/cta/CTA'), { ssr: false });
 const Footer = dynamic(() => import('./components/footer/Footer'), { ssr: false });
 const PremiumGallery = dynamic(() => import('./components/carousel/PremiumGallery'), { ssr: false });
+const FAQ = dynamic(() => import('./components/faq/faq'), { ssr: false });
 
 // Load Aladin font
 const aladin = Aladin({
@@ -43,8 +44,9 @@ export default function Home() {
       <Hero font={aladin} />
       <About font={aladin} />
       <Showcase font={aladin} />
-      <Pricing font={aladin} />
       <PremiumGallery font={aladin} />
+      <Pricing font={aladin} />
+      <FAQ />
       <Testimonials font={aladin} />
       <CTA font={aladin} />
       <Footer font={aladin} />
