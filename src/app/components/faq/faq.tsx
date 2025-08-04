@@ -23,7 +23,7 @@ const FAQ: React.FC = () => {
       question: 'Os ingressos estão incluídos no meu Kit? Quanto vai custar?',
       answer: (
         <div className="space-y-2">
-          <p>Cada participante já adquire 2 ingressos, a Bailarina não precisa de Ingresso.</p>
+          <p>Os participantes têm direito à entrada liberada e mais dois ingressos de cortesia.</p>
           <p>O preço do ingresso extra varia, de acordo com o lote:</p>
           <ul className="list-disc pl-5 space-y-1">
             <li>1º Lote: R$40,00</li>
@@ -58,14 +58,13 @@ const FAQ: React.FC = () => {
           <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
             <p className="font-semibold">O preço normal do Kit Aladdin 2025 é R$997,00 mas até dia 14 de agosto você terá:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>R$200,00 de desconto parcelando em até 4x no pix</li>
-              <li>R$300,00 de desconto à vista</li>
+              <li>R$300,00 de desconto parcelando em até 4x no pix</li>
             </ul>
             <div className="mt-3 p-3 bg-white rounded-md">
               <p className="line-through text-gray-500">DE: R$997,00</p>
-              <p className="text-xl font-bold text-purple-700">POR: 4x de R$199,25 ou R$797,00 à vista</p>
+              <p className="text-xl font-bold text-purple-700">POR: 4x de R$174,25 ou R$697,00 à vista</p>
             </div>
-            <p className="mt-2 text-sm">Ainda teremos a opção de pagamento feito no cartão de crédito por até 12x de R$79,90.</p>
+            <p className="mt-2 text-sm">Ainda teremos a opção de pagamento feito no cartão de crédito por até 12x de R$71,24.</p>
           </div>
           <p className="font-semibold text-purple-700">Por isso faça a inscrição o quanto antes para não perder essa oportunidade!</p>
           <p className="text-center text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-lg">

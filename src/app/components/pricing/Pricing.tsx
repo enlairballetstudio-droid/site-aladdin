@@ -122,12 +122,6 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
       bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
     },
     {
-      title: 'Fotógrafo Profissional',
-      description: 'Para eternizar cada momento do evento.',
-      icon: '📸',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
-    },
-    {
       title: 'Direitos Autorais',
       description: 'Tudo em conformidade',
       icon: '📝',
@@ -236,7 +230,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
            Em 2025 evoluímos a experiência, para você desfrutar o melhor do nosso espetáculo. 
           </p>
           <p className="text-xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
-            Kit Aladin 2025
+           O Que Está Incluso no Seu Kit Aladin 2025
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {features.map((feature, idx) => (
@@ -275,7 +269,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
 
         {/* Pricing Cards Section */}
         <motion.div 
-          className="max-w-6xl mx-auto grid grid-cols-1 items-center md:grid-cols-2 gap-8 "
+          className="max-w-6xl mx-auto grid grid-cols-1 max-md:flex max-md:flex-col-reverse items-center md:grid-cols-2 gap-8 "
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -295,12 +289,12 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 <h3 className="text-2xl font-bold text-gray-800">Pagamento com PIX</h3>
                 <p className="text-green-600 font-semibold">Com Desconto Exclusivo</p>
               </div>
-              
               <div className="text-center bg-green-50 rounded-2xl p-6 mb-6">
-                <p className="text-lg text-gray-500 line-through">De R$ 997,00</p>
-                <p className="text-6xl max-md:text-4xl font-extrabold text-green-700 my-2">R$ 797,00</p>
-                <p className="text-md font-semibold text-green-800 bg-green-200 rounded-full px-4 py-1 inline-block">
-                  Em até 4x sem juros
+                <p className="text-6xl max-md:text-4xl font-extrabold text-green-700 my-2">
+                  4x <span className="text-4xl">de</span> R$ 174,25
+                </p>
+                <p className="text-md font-semibold text-green-800">
+                  Ou R$ 697,00 à vista
                 </p>
               </div>
 
@@ -309,6 +303,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">01 de setembro.</span></p>
               </div>
               
+              
+
+              <Link href="https://wa.me/5531997777994" target="_blank">
               <motion.button 
                 className="w-full py-4 px-6 rounded-xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.02 }}
@@ -316,6 +313,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               >
                 Pagar com PIX
               </motion.button>
+              </Link>
               
               <div className="mt-4 text-center text-xs text-gray-500">
                 <a href="#" className="hover:underline flex items-center justify-center gap-1">
@@ -338,12 +336,11 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
               
               <div className="text-center bg-blue-50 rounded-2xl p-6 mb-6">
-                <p className="text-lg text-gray-500">Total: R$ 956,40</p>
                 <p className="text-6xl max-md:text-4xl font-extrabold text-blue-700 my-2">
-                  12x <span className="text-4xl">de</span> R$ 79,70
+                  12x <span className="text-4xl">de</span> R$ 71,24
                 </p>
                 <p className="text-md font-semibold text-blue-800">
-                  Ou R$ 797,00 à vista
+                  Ou R$ 697,00 à vista
                 </p>
               </div>
 
@@ -351,6 +348,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                  <p>Ingressos à venda a partir de <span className="font-bold">01 de setembro.</span></p>
               </div>
               
+              
+              
+              <Link href="https://chk.eduzz.com/E05X652DWX" target="_blank">
               <motion.button 
                 className="w-full py-4 px-6 rounded-xl font-bold text-white text-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.02 }}
@@ -358,6 +358,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               >
                 Pagar com Cartão
               </motion.button>
+              </Link>
               
               <div className="mt-4 text-center text-xs text-gray-500">
                 <a href="#" className="hover:underline flex items-center justify-center gap-1">

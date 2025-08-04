@@ -182,6 +182,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               </Link>
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
             </motion.button>
+            <Link href="https://wa.me/5531997777994" target="_blank">
             <motion.button
               className="relative overflow-hidden group border-2  font-semibold py-4 px-12 rounded-full text-lg"
               style={{
@@ -196,15 +197,16 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               }}
               whileTap={buttonTap}
             >
-              <Link href="https://wa.me/5531997777994" target="_blank">
+              
                 <span
 
                   className="relative z-10 max-md:text-sm  flex items-center">
                   <FaWhatsapp className="mr-3 text-xl " />
                   Falar pelo WhatsApp</span>
-              </Link>
+             
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
             </motion.button>
+            </Link>
           </motion.div>
 
           <motion.div
