@@ -311,7 +311,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Pagar com PIX
+                Pagar com PIX <span className="text-xs">(Através do Whatsapp)</span>
               </motion.button>
               </Link>
               
