@@ -130,7 +130,7 @@ export default function Hero({ font }: HeroProps) {
                 whileHover={buttonHover}
                 whileTap={buttonTap}
               >
-                <Link href="#ingressos">
+                <Link href="https://chk.eduzz.com/69KA6P4A0O" target="_blank">
                   <span className="relative z-10 max-md:text-sm max-md:uppercase">Comprar Ingressos</span>
                 </Link>
                 <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>

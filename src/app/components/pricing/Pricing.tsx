@@ -272,6 +272,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
           className="max-w-6xl mx-auto grid grid-cols-1 max-md:flex max-md:flex-col-reverse items-center md:grid-cols-2 gap-8 "
           variants={container}
           initial="hidden"
+          id="precos"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >

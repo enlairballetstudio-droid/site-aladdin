@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     siteName: "En L'air Centro de Dança",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/imagens/hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Unique Ballet - Uma volta ao mundo na ponta dos pés",
+        alt: "En Lair - Aladdin 2025",
       },
     ],
     locale: "pt_BR",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Unique Ballet ${moment().format("YYYY")} - Uma volta ao mundo na ponta dos pés`,
-    description: "Dia 14/12/2025 às 16:00. Um espetáculo inesquecível no Teatro Paulo Autran. Garanta já o seu ingresso!",
-    images: ["/imagens/hero-mobile.jpeg"],
+    title: `A Magia de Aladdin e Jasmine - En L'air Centro de Dança`,
+    description: "Espetáculo de dança infantil inspirado no clássico da Disney. Uma experiência mágica com nossos talentosos alunos no palco. Garanta seu ingresso!",
+    images: ["/imagens/hero.jpg"],
   },
   manifest: '/site.webmanifest',
   themeColor: '#ffffff',

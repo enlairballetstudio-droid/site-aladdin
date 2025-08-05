@@ -174,7 +174,7 @@ const CTA: React.FC<CTAProps> = ({ font }) => {
               whileHover={buttonHover}
               whileTap={buttonTap}
             >
-              <Link href="#ingressos">
+              <Link href="#precos">
                 <span className="relative z-10 max-md:text-sm flex items-center">
                   Garantir Minha Vaga Agora
                   <FaArrowRight className="ml-3 transition-transform group-hover:translate-x-1" />
