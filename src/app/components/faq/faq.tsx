@@ -88,7 +88,7 @@ const FAQ: React.FC = () => {
       question: 'Irmãs tem desconto no Kit Aladdin 2025?',
       answer: (
         <div className="space-y-2">
-          <p>Sim para quem tem irmã é concedido um desconto de 15% equivalente a R$239,10 de desconto totalizando um valor final de R$1.354,90 para os dois kits.</p>
+          <p>Sim para quem tem irmã é concedido um desconto de 15% equivalente a R$209,10 de desconto totalizando um valor final de R$1.184,90 para os dois kits.</p>
         </div>
       ),
       icon: <FaTag className="text-red-500" />
