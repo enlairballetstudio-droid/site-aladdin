@@ -300,7 +300,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
 
               <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
-                <p><span className="font-bold">Válido para pagamentos até 14/08.</span></p>
+                <p><span className="font-bold">Válido para pagamentos até 30/08.</span></p>
                 <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">01 de setembro.</span></p>
               </div>
               
