@@ -26,9 +26,9 @@ const FAQ: React.FC = () => {
           <p>Os participantes têm direito à entrada liberada e mais dois ingressos de cortesia.</p>
           <p>O preço do ingresso extra varia, de acordo com o lote:</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>1º Lote: R$40,00</li>
-            <li>2º Lote: R$45,00</li>
-            <li>3º Lote: R$50,00</li>
+            <li>1º Lote: R$40,00 (de 15/09 até 10/10 ou enquanto não esgotarem)</li>
+            <li>2º Lote: R$45,00 (10/10 até 10/11 ou enquanto não esgotarem)</li>
+            <li>3º Lote: R$50,00 (a partir de 11/11 até a data do evento se tiverem ingressos disponíveis)</li>
           </ul>
           <p className="text-sm text-gray-600 mt-2">
             Obs: Preços acima são referentes a meia entrada, exclusivo para:
@@ -43,8 +43,9 @@ const FAQ: React.FC = () => {
       question: 'As cadeiras são numeradas? Onde posso comprar os ingressos?',
       answer: (
         <div className="space-y-2">
-          <p>As cadeiras não são numeradas, mas estamos buscando uma plataforma segura para fazer os próximos eventos dessa forma.</p>
-          <p>Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online.</p>
+          <p>As cadeiras serão numeradas, pois conseguimos uma plataforma de venda segura para os ingressos.
+          Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online.</p>
+         
         </div>
       ),
       icon: <FaQuestionCircle className="text-blue-600" />
@@ -56,15 +57,15 @@ const FAQ: React.FC = () => {
           <p>Para construir este mundo mágico, temos prazos e por isso quanto antes você se inscrever, melhor será para todos nós!</p>
           <p>Por isso fazemos condições exclusivas para quem se antecipa e garante mais cedo o seu Kit Aladdin 2025.</p>
           <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-            <p className="font-semibold">O preço normal do Kit Aladdin 2025 é R$997,00 mas até dia 14 de agosto você terá:</p>
+            <p className="font-semibold">O preço normal do Kit Aladdin 2025 é R$997,00 mas até dia 30 de setembro você terá:</p>
             <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>R$300,00 de desconto parcelando em até 4x no pix</li>
+              <li>R$200,00 de desconto parcelando em até 3x no pix</li>
             </ul>
             <div className="mt-3 p-3 bg-white rounded-md">
               <p className="line-through text-gray-500">DE: R$997,00</p>
-              <p className="text-xl font-bold text-purple-700">POR: 4x de R$174,25 ou R$697,00 à vista</p>
+              <p className="text-xl font-bold text-purple-700">POR: 3x de R$265,70 ou R$797,00 à vista</p>
             </div>
-            <p className="mt-2 text-sm">Ainda teremos a opção de pagamento feito no cartão de crédito por até 12x de R$71,24.</p>
+            <p className="mt-2 text-sm">Ainda teremos a opção de pagamento feito no cartão de crédito por até 12x de R$81,46.</p>
           </div>
           <p className="font-semibold text-purple-700">Por isso faça a inscrição o quanto antes para não perder essa oportunidade!</p>
           <p className="text-center text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-lg">
@@ -88,7 +89,7 @@ const FAQ: React.FC = () => {
       question: 'Irmãs tem desconto no Kit Aladdin 2025?',
       answer: (
         <div className="space-y-2">
-          <p>Sim para quem tem irmã é concedido um desconto de 15% equivalente a R$209,10 de desconto totalizando um valor final de R$1.184,90 para os dois kits.</p>
+          <p>Sim para quem tem irmã é concedido um desconto de 15% equivalente a R$239,10 de desconto totalizando um valor final de R$1.354,90 para os dois kits.</p>
         </div>
       ),
       icon: <FaTag className="text-red-500" />
