@@ -292,16 +292,16 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
               <div className="text-center bg-green-50 rounded-2xl p-6 mb-6">
                 <p className="text-6xl max-md:text-4xl font-extrabold text-green-700 my-2">
-                  4x <span className="text-4xl">de</span> R$ 174,25
+                  3x <span className="text-4xl">de</span> R$ 265,70
                 </p>
                 <p className="text-md font-semibold text-green-800">
-                  Ou R$ 697,00 à vista
+                  Ou R$ 797,00 à vista
                 </p>
               </div>
 
               <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
-                <p><span className="font-bold">Válido para pagamentos até 30/08.</span></p>
-                <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">01 de setembro.</span></p>
+                <p><span className="font-bold">Válido para pagamentos até 30/09.</span></p>
+                <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
               </div>
               
               
@@ -338,15 +338,15 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               
               <div className="text-center bg-blue-50 rounded-2xl p-6 mb-6">
                 <p className="text-6xl max-md:text-4xl font-extrabold text-blue-700 my-2">
-                  12x <span className="text-4xl">de</span> R$ 71,24
+                  12x <span className="text-4xl">de</span> R$ 81,46
                 </p>
                 <p className="text-md font-semibold text-blue-800">
-                  Ou R$ 697,00 à vista
+                  Ou R$ 797,00 à vista
                 </p>
               </div>
 
               <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
-                 <p>Ingressos à venda a partir de <span className="font-bold">01 de setembro.</span></p>
+                 <p>Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
               </div>
               
               
