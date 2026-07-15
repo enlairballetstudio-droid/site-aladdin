@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
@@ -5,7 +7,6 @@ import { theme } from '@/app/theme/theme';
 import { buttonHover, buttonTap } from '@/app/animations';
 import Link from 'next/link';
 
-// Animation variants
 const fadeIn = (direction: string = 'up', delay: number = 0) => ({
   hidden: {
     y: direction === 'up' ? 40 : -40,
@@ -34,8 +35,6 @@ const staggerContainer = (staggerChildren: number = 0.1, delayChildren: number =
   },
 });
 
-// Animation variants
-
 interface PricingProps {
   font: {
     className: string;
@@ -50,86 +49,85 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
       text: 'Experiência Completa',
       description: 'Desde os ensaios até a apresentação, momentos únicos que geram memórias afetivas e positivas.',
       icon: '🌟',
-      bgColor: 'bg-gradient-to-br from-purple-500 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-[#a9d9ee] to-[#2f5d9b]'
     },
     {
       text: 'Figurino Autêntico',
       description: '01 figurino autêntico do personagem da turma, confeccionado 1 a 1 por nossa equipe de fadas costureiras, com adereços de cabelo.',
       icon: '👗',
-      bgColor: 'bg-gradient-to-br from-pink-500 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-[#d8b45a] to-[#2f5d9b]'
     },
     {
-      text: 'Apresentação encantadora',
+      text: 'Apresentação encantadora',
       description: 'Apresentação no palco profissional, com produção digna de Superstar.',
       icon: '🎭',
-      bgColor: 'bg-gradient-to-br from-blue-500 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#14243d]'
     },
     {
       text: 'Vídeo Memorável',
       description: 'Guarde pra sempre registros dessa experiência única que gera valor para as outras gerações.',
       icon: '🎥',
-      bgColor: 'bg-gradient-to-br from-yellow-400 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-[#d8b45a] to-[#a9d9ee]'
     },
     {
       text: 'T-Shirt Espetáculo',
-      description: 'Uma T-Shirt exclusiva para entrar no clima e ficar na moda En L\'air Aladdin.',
+      description: 'Uma T-Shirt exclusiva para entrar no clima e ficar na moda En L\'air Cinderela.',
       icon: '👕',
-      bgColor: 'bg-gradient-to-br from-green-400 to-blue-600'
+      bgColor: 'bg-gradient-to-br from-[#7fbfdc] to-[#2f5d9b]'
     },
     {
       text: '2 Ingressos Garantidos',
       description: 'Dois ingressos inclusos para você levar os seus convidados especiais e curtirem juntos essa experiência inesquecível.',
       icon: '🎟️',
-      bgColor: 'bg-gradient-to-br from-orange-400 to-blue-500'
+      bgColor: 'bg-gradient-to-br from-[#c99d3c] to-[#2f5d9b]'
     }
   ];
 
   const includedItems = [
     {
       title: 'Teatro e Cenografia',
-      description: 'Espaço mágico do mundo de Aladdin',
+      description: 'Espaço mágico do mundo de Cinderela',
       icon: '🏰',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Equipe Técnica',
       description: 'Profissionais dedicados',
       icon: '👨‍💼',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Recepção',
       description: 'Atendimento especializado',
       icon: '💁‍♀️',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Bailarino Contratado',
       description: 'Bailarino para a apresentação.',
       icon: '🩰',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Segurança',
       description: 'Evento tranquilo e seguro',
       icon: '🛡️',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Vídeo Maker Profissional',
       description: 'Registro em vídeo de alta qualidade.',
       icon: '🎬',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     },
     {
       title: 'Direitos Autorais',
       description: 'Tudo em conformidade',
       icon: '📝',
-      bgColor: 'bg-gradient-to-br from-blue-600 to-blue-700'
+      bgColor: 'bg-gradient-to-br from-[#2f5d9b] to-[#4c86bd]'
     }
   ];
 
-  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -155,15 +153,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
   return (
     <section 
       id="ingressos" 
-      className="py-20 relative overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50"
+      className="py-20 relative overflow-hidden bg-gradient-to-br from-[#edf8fd] via-white to-[#e0f1f8]"
     >
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'url("/images/arabesque-pattern-gold.png")',
-          backgroundSize: '800px',
-          opacity: 0.1
-        }} />
-      </div>
+      <div className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-[#b8e0f1]/35 blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
@@ -174,30 +166,29 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
           transition={{ duration: 0.8 }}
         >
           <motion.div 
-            className="inline-flex items-center bg-gradient-to-r from-blue-100 to-blue-100 text-blue-700 px-6 py-2 rounded-full mb-6 text-sm font-medium"
+            className="inline-flex items-center bg-[#dceff8] text-[#28568e] px-6 py-2 rounded-full mb-6 text-sm font-medium"
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <FaStar className="mr-2 text-yellow-400" />
+            <FaStar className="mr-2 text-[#d8b45a]" />
             O momento mais especial do ano!
           </motion.div>
           
           <h2 
-            className={`text-4xl md:text-6xl font-aladin mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-600`}
+            className={`text-4xl md:text-6xl ${font.className} mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#28568e] to-[#2f5d9b]`}
           >
             Quer Ter Memórias Inesquecíveis?
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-12">
-            A experiência de estar no palco, vivendo a magia de Aladdin e Jasmine é <span className="font-bold text-blue-600">inesquecível</span>. 
-            Um momento único que fica para sempre na memória do seu filho(a).
+            A magia de <span className="font-bold text-[#28568e]">Cinderela</span> e o encanto da meia-noite transformam cada passo em uma lembrança para sempre.
           </p>
         </motion.div>
 
         {/* Included Items Section */}
         <div className="mb-16">
-          <div className="w-full max-w-2xl mx-auto bg-blue-50/70 p-6 sm:p-8 rounded-2xl shadow-inner backdrop-blur-sm">
+          <div className="w-full max-w-2xl mx-auto bg-[#dceff8]/70 p-6 sm:p-8 rounded-2xl shadow-inner backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Viva a Magia do seu Filho(a)!</h3>
             <div className="flex flex-col gap-4">
               {includedItems.map((item, index) => (
@@ -209,7 +200,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                   whileInView="show"
                   viewport={{ once: true, margin: "-20px" }}
                 >
-                  <FaCheckCircle className="text-blue-500 w-5 h-5 flex-shrink-0 mr-4" />
+                  <FaCheckCircle className="text-[#2f5d9b] w-5 h-5 flex-shrink-0 mr-4" />
                   <div>
                     <p className="text-gray-700">
                       <span className="font-semibold text-gray-800">{item.title}:</span>
@@ -225,12 +216,12 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
         {/* Features Section */}
         <div className="mb-14 w-full max-w-4xl text-center mx-auto">
           <p 
-            className={`text-xl md:text-3xl font-semibold mb-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-600`}
+            className={`text-xl md:text-3xl font-semibold mb-10 bg-clip-text text-transparent bg-gradient-to-r from-[#14243d] to-[#2f5d9b]`}
           >
-           Em 2025 evoluímos a experiência, para você desfrutar o melhor do nosso espetáculo. 
+           Em 2026 evoluímos a experiência, para você desfrutar o melhor do nosso espetáculo.
           </p>
-          <p className="text-xl font-bold text-center mb-4 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
-           O Que Está Incluso no Seu Kit Aladdin 2025
+          <p className="text-xl font-bold text-center mb-4 bg-gradient-to-r from-[#28568e] to-[#2f5d9b] bg-clip-text text-transparent">
+           O Que Está Incluso no Seu Kit Cinderela 2026
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {features.map((feature, idx) => (
@@ -276,7 +267,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* PIX Card - Redesigned */}
+          {/* PIX Card */}
           <motion.div 
             className="bg-white rounded-3xl shadow-lg overflow-hidden relative border-2 border-green-500 transform hover:scale-105 transition-transform duration-300"
             variants={item}
@@ -304,8 +295,6 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
                 <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
               </div>
               
-              
-
               <Link href="https://wa.me/5531997777994" target="_blank">
               <motion.button 
                 className="w-full py-4 px-6 rounded-xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -325,7 +314,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
             </div>
           </motion.div>
 
-          {/* Credit Card Card - Redesigned */}
+          {/* Credit Card Card */}
           <motion.div 
             className="bg-white rounded-3xl shadow-lg overflow-hidden relative border-2 border-gray-200 transform hover:scale-105 transition-transform duration-300"
             variants={item}
@@ -348,8 +337,6 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
                  <p>Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
               </div>
-              
-              
               
               <Link href="https://chk.eduzz.com/E05X652DWX" target="_blank">
               <motion.button 

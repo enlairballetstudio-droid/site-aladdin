@@ -3,7 +3,7 @@
 const nextConfig = {
   // Configuração para imagens
   images: {
-    domains: ['enlair-danca.vercel.app', 'avatar.iran.liara.run'],
+    domains: ['enlair-danca.vercel.app'],
     remotePatterns: [
       {
         protocol: 'https',

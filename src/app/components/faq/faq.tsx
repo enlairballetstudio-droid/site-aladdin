@@ -24,11 +24,11 @@ const FAQ: React.FC = () => {
       answer: (
         <div className="space-y-2">
           <p>Os participantes têm direito à entrada liberada e mais dois ingressos de cortesia.</p>
-          <p>O preço do ingresso extra varia, de acordo com o lote:</p>
+          <p>O preço do ingresso extra varia de acordo com o lote:</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>1º Lote: R$40,00 (de 15/09 até 10/10 ou enquanto não esgotarem)</li>
-            <li>2º Lote: R$45,00 (10/10 até 10/11 ou enquanto não esgotarem)</li>
-            <li>3º Lote: R$50,00 (a partir de 11/11 até a data do evento se tiverem ingressos disponíveis)</li>
+            <li>1º Lote: R$45,00 (10/09 até 10/10 ou enquanto não esgotarem)</li>
+            <li>2º Lote: R$50,00 (11/10 até 20/10 ou enquanto não esgotarem)</li>
+            <li>3º Lote: R$55,00 (21/10 até 02/11 ou enquanto não esgotarem)</li>
           </ul>
           <p className="text-sm text-gray-600 mt-2">
             Obs: Preços acima são referentes a meia entrada, exclusivo para:
@@ -37,62 +37,67 @@ const FAQ: React.FC = () => {
           </p>
         </div>
       ),
-      icon: <FaTicketAlt className="text-purple-600" />
+      icon: <FaTicketAlt className="text-[#2f5d9b]" />
     },
     {
       question: 'As cadeiras são numeradas? Onde posso comprar os ingressos?',
       answer: (
         <div className="space-y-2">
-          <p>As cadeiras serão numeradas, pois conseguimos uma plataforma de venda segura para os ingressos.
-          Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online.</p>
-         
+          <p>Sim! As cadeiras serão numeradas por sessão, garantindo seu conforto e melhor organização.</p>
+          <p>Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online através da <a href="https://www.diversosingressos.com.br/" target="_blank" rel="noopener noreferrer" className="text-[#2f5d9b] font-semibold hover:underline">Diversos Ingressos</a>.</p>
         </div>
       ),
-      icon: <FaQuestionCircle className="text-blue-600" />
+      icon: <FaQuestionCircle className="text-[#d8b45a]" />
     },
     {
-      question: 'Até quando poderei comprar o meu Kit Aladdin 2025?',
+      question: 'Até quando poderei comprar o meu Kit Cinderela 2026?',
       answer: (
         <div className="space-y-3">
           <p>Para construir este mundo mágico, temos prazos e por isso quanto antes você se inscrever, melhor será para todos nós!</p>
-          <p>Por isso fazemos condições exclusivas para quem se antecipa e garante mais cedo o seu Kit Aladdin 2025.</p>
-          <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-            <p className="font-semibold">O preço normal do Kit Aladdin 2025 é R$997,00 mas até dia 30 de setembro você terá:</p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>R$200,00 de desconto parcelando em até 3x no pix</li>
-            </ul>
+          <p>Por isso fazemos condições exclusivas para quem se antecipa e garante mais cedo o seu Kit Cinderela 2026.</p>
+          <div className="bg-[#dceff8] p-4 rounded-lg border-l-4 border-[#2f5d9b]">
+            <p className="font-semibold">O preço normal do Kit Cinderela 2026 é R$997,00, mas até dia 30/07 você terá R$248,00 de desconto:</p>
             <div className="mt-3 p-3 bg-white rounded-md">
               <p className="line-through text-gray-500">DE: R$997,00</p>
-              <p className="text-xl font-bold text-purple-700">POR: 3x de R$265,70 ou R$797,00 à vista</p>
+              <p className="text-xl font-bold text-[#2f5d9b]">POR: R$749,00</p>
             </div>
-            <p className="mt-2 text-sm">Ainda teremos a opção de pagamento feito no cartão de crédito por até 12x de R$81,46.</p>
+            <p className="mt-3 font-semibold">Formas de pagamento:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>3x de R$265,70 no PIX (sem juros)</li>
+              <li>Cartão de crédito em até 12x de R$81,46 (com juros)</li>
+            </ul>
           </div>
-          <p className="font-semibold text-purple-700">Por isso faça a inscrição o quanto antes para não perder essa oportunidade!</p>
-          <p className="text-center text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white p-3 rounded-lg">
-            GARANTA JÁ O SEU KIT ALADDIN 2025 COM CONDIÇÕES ESPECIAIS!
+          <p className="font-semibold text-[#2f5d9b]">Por isso faça a inscrição o quanto antes para não perder essa oportunidade!</p>
+          <p className="text-center text-lg font-bold bg-gradient-to-r from-[#2f5d9b] to-[#4c86bd] text-white p-3 rounded-lg">
+            GARANTA JÁ O SEU Kit Cinderela 2026 COM CONDIÇÕES ESPECIAIS!
           </p>
         </div>
       ),
-      icon: <FaShoppingBag className="text-amber-600" />
+      icon: <FaShoppingBag className="text-[#d8b45a]" />
     },
     {
       question: 'Eu danço mais de uma modalidade. Tenho que pagar mais de um Kit?',
       answer: (
         <div className="space-y-2">
-          <p>Não. O aluno que dançar mais de uma modalidade pagará um único Kit Aladdin 2025 e o valor adicional de cada figurino extra, a seguir:</p>
-          <p className="font-semibold">Figurino extra: até 12 parcelas de R$39,50 ou R$395,00 à vista, já considerando desconto de 16,6%.</p>
+          <p>Não. O aluno que dançar mais de uma modalidade pagará um único Kit Cinderela 2026 e o valor adicional de cada figurino extra.</p>
+          <p className="font-semibold">Figurino extra: consulte valores diretamente conosco.</p>
         </div>
       ),
-      icon: <FaUsers className="text-green-600" />
+      icon: <FaUsers className="text-[#2f5d9b]" />
     },
     {
-      question: 'Irmãs tem desconto no Kit Aladdin 2025?',
+      question: 'Irmãs tem desconto no Kit Cinderela 2026?',
       answer: (
         <div className="space-y-2">
-          <p>Sim para quem tem irmã é concedido um desconto de 15% equivalente a R$239,10 de desconto totalizando um valor final de R$1.354,90 para os dois kits.</p>
+          <p>Sim! Para quem tem irmã é concedido um desconto de 15% no valor total.</p>
+          <div className="bg-[#dceff8] p-3 rounded-lg mt-2">
+            <p className="font-semibold text-[#2f5d9b]">Valor para duas irmãs:</p>
+            <p className="line-through text-gray-500">DE: R$1.385,00</p>
+            <p className="text-xl font-bold text-[#2f5d9b]">POR: R$1.177,25 (15% de desconto)</p>
+          </div>
         </div>
       ),
-      icon: <FaTag className="text-red-500" />
+      icon: <FaTag className="text-[#d8b45a]" />
     }
   ];
 
@@ -105,11 +110,11 @@ const FAQ: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-6xl font-aladin h-fit font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-6xl font-aladin h-fit font-bold mb-4 bg-gradient-to-r from-[#2f5d9b] to-[#4c86bd] bg-clip-text text-transparent">
           Perguntas Frequentes
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Tire suas dúvidas sobre o evento, ingressos e kits do Espetáculo Aladdin 2025
+          Tire suas dúvidas sobre o evento, ingressos e kits do Espetáculo Cinderela 2026
         </p>
       </motion.div>
 

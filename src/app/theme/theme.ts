@@ -1,15 +1,15 @@
 const theme = {
   colors: {
-    primary: '#3B1B80', // Deep purple
-    secondary: '#FFD700', // Gold
-    accent: '#FF6B6B', // Coral
-    dark: '#1A0B35', // Deep purple-black
-    light: '#F8F1FF', // Light lavender
+    primary: '#2F5D9B',
+    secondary: '#D8B45A',
+    accent: '#A9D9EE',
+    dark: '#14243D',
+    light: '#F4FAFF',
     white: '#FFFFFF',
     black: '#000000',
   },
   fonts: {
-    primary: '"Aladin", cursive',
+    primary: 'var(--font-playfair-display)',
     secondary: '"Poppins", sans-serif',
   },
   breakpoints: {
@@ -25,36 +25,26 @@ const theme = {
   },
   globalStyles: `
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
     }
-    
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
     }
-    
-    @keyframes shimmer {
-      0% { background-position: -1000px 0; }
-      100% { background-position: 1000px 0; }
-    }
-    
+
     .text-stroke {
-      -webkit-text-stroke: 1px #FFD700;
-      text-stroke: 1px #FFD700;
+      -webkit-text-stroke: 1px #D8B45A;
       color: transparent;
     }
-    
-    .magic-hover {
-      transition: all 0.3s ease;
-    }
-    
+
+    .magic-hover { transition: transform 0.3s ease, filter 0.3s ease; }
     .magic-hover:hover {
       transform: translateY(-5px);
-      filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.3));
+      filter: drop-shadow(0 5px 15px rgba(216, 180, 90, 0.3));
     }
-  `
+  `,
 };
 
 export { theme };

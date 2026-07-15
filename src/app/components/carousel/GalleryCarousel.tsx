@@ -1,215 +1,218 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef, type PointerEvent as ReactPointerEvent } from 'react';
 import Image from 'next/image';
-import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { FaWebAwesome } from "react-icons/fa6";
+import { FaWebAwesome } from 'react-icons/fa6';
 
-type ImageType = {
-  src: string;
-  alt: string;
+type GalleryImage = {
+  readonly src: string;
+  readonly alt: string;
 };
 
 type GalleryCarouselProps = {
-  images: ImageType[];
-  onImageClick: (image: ImageType, index: number) => void;
+  readonly images: readonly GalleryImage[];
+  readonly onImageClick: (image: GalleryImage, index: number) => void;
 };
+
+const SCROLL_SPEED_PX_PER_SECOND = 18;
+const RESUME_DELAY_MS = 2000;
 
 export default function GalleryCarousel({ images, onImageClick }: GalleryCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef(false);
+  const animationIdRef = useRef<number | null>(null);
+  const autoScrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const scrollPositionRef = useRef(0);
+  const lastTimestampRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const didDragRef = useRef(false);
   const isPausedRef = useRef(false);
-  const animationIdRef = useRef<number | null>(null);
-  const lastTimestampRef = useRef<number>(0);
-  const scrollSpeed = 0.3;
-  const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const scrollContainer = containerRef.current;
+  const isInViewRef = useRef(false);
+  const isPageVisibleRef = useRef(true);
+  const prefersReducedMotionRef = useRef(false);
 
-  // Event handlers
-  const handleMouseDown = useCallback((e: MouseEvent) => {
-    const scrollContainer = containerRef.current;
-    if (!scrollContainer) return;
-    isDraggingRef.current = true;
-    startXRef.current = e.pageX - scrollContainer.offsetLeft;
-    scrollLeftRef.current = scrollContainer.scrollLeft;
-    isPausedRef.current = true;
-    if (document.body) {
-      document.body.style.cursor = 'grabbing';
+  const shouldAutoScroll = useCallback(
+    () =>
+      isInViewRef.current &&
+      isPageVisibleRef.current &&
+      !prefersReducedMotionRef.current &&
+      !isPausedRef.current &&
+      !isDraggingRef.current,
+    [],
+  );
+
+  const stopAnimation = useCallback(() => {
+    if (animationIdRef.current !== null) {
+      cancelAnimationFrame(animationIdRef.current);
+      animationIdRef.current = null;
     }
   }, []);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const scrollContainer = containerRef.current;
-    if (!isDraggingRef.current || !scrollContainer) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startXRef.current) * 2;
-    scrollContainer.scrollLeft = scrollLeftRef.current - walk;
-    scrollPositionRef.current = scrollLeftRef.current - walk;
-  }, []);
+  const startAnimation = useCallback(() => {
+    const container = containerRef.current;
+    if (!container || animationIdRef.current !== null || !shouldAutoScroll()) return;
 
-  const handleMouseUp = useCallback(() => {
-    isDraggingRef.current = false;
-    if (document.body) {
-      document.body.style.cursor = 'grab';
+    const loopWidth = container.scrollWidth / 2;
+    if (loopWidth <= 0) return;
+
+    const animate = (timestamp: number) => {
+      if (!shouldAutoScroll()) {
+        animationIdRef.current = null;
+        return;
+      }
+
+      if (lastTimestampRef.current === 0) {
+        lastTimestampRef.current = timestamp;
+      }
+
+      const elapsedSeconds = (timestamp - lastTimestampRef.current) / 1000;
+      lastTimestampRef.current = timestamp;
+      scrollPositionRef.current += SCROLL_SPEED_PX_PER_SECOND * elapsedSeconds;
+
+      if (scrollPositionRef.current >= loopWidth) {
+        scrollPositionRef.current = 0;
+      }
+
+      container.scrollLeft = scrollPositionRef.current;
+      animationIdRef.current = requestAnimationFrame(animate);
+    };
+
+    lastTimestampRef.current = 0;
+    animationIdRef.current = requestAnimationFrame(animate);
+  }, [shouldAutoScroll]);
+
+  const synchronizeAnimation = useCallback(() => {
+    if (shouldAutoScroll()) {
+      startAnimation();
+      return;
     }
+
+    stopAnimation();
+  }, [shouldAutoScroll, startAnimation, stopAnimation]);
+
+  const resumeAfterInteraction = useCallback(() => {
     if (autoScrollTimeoutRef.current) {
       clearTimeout(autoScrollTimeoutRef.current);
     }
+
     autoScrollTimeoutRef.current = setTimeout(() => {
       isPausedRef.current = false;
-    }, 2000);
-  }, []);
+      synchronizeAnimation();
+    }, RESUME_DELAY_MS);
+  }, [synchronizeAnimation]);
 
-  // Touch event handlers
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    const scrollContainer = containerRef.current;
-    if (!scrollContainer) return;
-    isDraggingRef.current = true;
-    startXRef.current = e.touches[0].pageX - scrollContainer.offsetLeft;
-    scrollLeftRef.current = scrollContainer.scrollLeft;
-    isPausedRef.current = true;
-  }, []);
+  const handlePointerDown = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
 
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    const scrollContainer = containerRef.current;
-    if (!isDraggingRef.current || !scrollContainer) return;
-    e.preventDefault();
-    const x = e.touches[0].pageX - scrollContainer.offsetLeft;
-    const walk = (x - startXRef.current) * 2;
-    scrollContainer.scrollLeft = scrollLeftRef.current - walk;
-    scrollPositionRef.current = scrollLeftRef.current - walk;
-  }, []);
+      const container = containerRef.current;
+      if (!container) return;
 
-  const handleTouchEnd = useCallback(() => {
-    isDraggingRef.current = false;
-    if (autoScrollTimeoutRef.current) {
-      clearTimeout(autoScrollTimeoutRef.current);
+      container.setPointerCapture(event.pointerId);
+      isDraggingRef.current = true;
+      didDragRef.current = false;
+      isPausedRef.current = true;
+      startXRef.current = event.clientX;
+      scrollLeftRef.current = container.scrollLeft;
+      synchronizeAnimation();
+    },
+    [synchronizeAnimation],
+  );
+
+  const handlePointerMove = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    const container = containerRef.current;
+    if (!container || !isDraggingRef.current) return;
+
+    const distance = event.clientX - startXRef.current;
+    if (Math.abs(distance) > 3) {
+      didDragRef.current = true;
     }
-    autoScrollTimeoutRef.current = setTimeout(() => {
-      isPausedRef.current = false;
-    }, 2000);
+
+    const nextPosition = Math.max(0, scrollLeftRef.current - distance * 1.5);
+    container.scrollLeft = nextPosition;
+    scrollPositionRef.current = nextPosition;
   }, []);
+
+  const handlePointerEnd = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      const container = containerRef.current;
+      if (container?.hasPointerCapture(event.pointerId)) {
+        container.releasePointerCapture(event.pointerId);
+      }
+
+      isDraggingRef.current = false;
+      resumeAfterInteraction();
+    },
+    [resumeAfterInteraction],
+  );
 
   useEffect(() => {
-    const scrollContainer = containerRef.current;
-    if (!scrollContainer) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const containerWidth = scrollContainer.scrollWidth / 2;
-
-    const animateScroll = (timestamp: number) => {
-      if (!lastTimestampRef.current) lastTimestampRef.current = timestamp;
-      const deltaTime = timestamp - lastTimestampRef.current;
-      lastTimestampRef.current = timestamp;
-
-      if (!isPausedRef.current && !isDraggingRef.current) {
-        scrollPositionRef.current = (scrollPositionRef.current + (scrollSpeed * deltaTime) / 16);
-        
-        if (scrollPositionRef.current >= containerWidth) {
-          scrollPositionRef.current = 0;
-          scrollContainer.scrollLeft = 0;
-        } else {
-          scrollContainer.scrollLeft = scrollPositionRef.current;
-        }
-      }
-      
-      const id = requestAnimationFrame(animateScroll);
-      animationIdRef.current = id;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotionPreference = () => {
+      prefersReducedMotionRef.current = mediaQuery.matches;
+      synchronizeAnimation();
     };
-
-    const startScrolling = () => {
-      if (animationIdRef.current === null) {
-        const id = requestAnimationFrame(animateScroll);
-        animationIdRef.current = id;
-      }
+    const updatePageVisibility = () => {
+      isPageVisibleRef.current = !document.hidden;
+      synchronizeAnimation();
     };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+        synchronizeAnimation();
+      },
+      { threshold: 0.1 },
+    );
 
-    const stopScrolling = () => {
-      if (animationIdRef.current !== null) {
-        cancelAnimationFrame(animationIdRef.current);
-        animationIdRef.current = null;
-      }
-    };
-
-    // Add event listeners
-    scrollContainer.addEventListener('mousedown', handleMouseDown as EventListener);
-    document.addEventListener('mousemove', handleMouseMove as EventListener);
-    document.addEventListener('mouseup', handleMouseUp);
-    
-    scrollContainer.addEventListener('touchstart', handleTouchStart as EventListener, { passive: false });
-    scrollContainer.addEventListener('touchmove', handleTouchMove as EventListener, { passive: false });
-    scrollContainer.addEventListener('touchend', handleTouchEnd as EventListener);
-
-    startScrolling();
+    updateMotionPreference();
+    updatePageVisibility();
+    observer.observe(container);
+    mediaQuery.addEventListener('change', updateMotionPreference);
+    document.addEventListener('visibilitychange', updatePageVisibility);
 
     return () => {
-      stopScrolling();
+      observer.disconnect();
+      mediaQuery.removeEventListener('change', updateMotionPreference);
+      document.removeEventListener('visibilitychange', updatePageVisibility);
+      stopAnimation();
+
       if (autoScrollTimeoutRef.current) {
         clearTimeout(autoScrollTimeoutRef.current);
       }
-      
-      scrollContainer.removeEventListener('mousedown', handleMouseDown as EventListener);
-      document.removeEventListener('mousemove', handleMouseMove as EventListener);
-      document.removeEventListener('mouseup', handleMouseUp);
-      
-      scrollContainer.removeEventListener('touchstart', handleTouchStart as EventListener);
-      scrollContainer.removeEventListener('touchmove', handleTouchMove as EventListener);
-      scrollContainer.removeEventListener('touchend', handleTouchEnd as EventListener);
-      
-      if (document.body) {
-        document.body.style.cursor = '';
-      }
     };
-  }, [handleMouseDown, handleMouseMove, handleMouseUp, handleTouchStart, handleTouchMove, handleTouchEnd]);
+  }, [stopAnimation, synchronizeAnimation]);
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className="flex pb-6 scrollbar-hide select-none touch-none"
-      style={{
-        overflowX: 'auto',
-        whiteSpace: 'nowrap',
-        cursor: 'grab',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-        WebkitOverflowScrolling: 'touch',
-        width: '100%',
-        minWidth: '100%',
-        display: 'flex',
-        flexWrap: 'nowrap',
-        padding: '0 16px'
-      }}
+      aria-label="Galeria deslizante de bastidores"
+      className="flex w-full min-w-full touch-pan-y select-none gap-6 overflow-x-auto px-4 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerEnd}
+      onPointerCancel={handlePointerEnd}
     >
       {images.map((image, index) => (
-        <div 
-          key={index} 
-          className="group relative flex-shrink-0 w-72 h-96 rounded-2xl shadow-lg cursor-pointer overflow-hidden"
-          style={{
-            scrollSnapAlign: 'start',
-            flex: '0 0 auto',
-            marginRight: '1.5rem',
-            width: '288px',
-            height: '384px'
+        <button
+          key={`${image.src}-${index}`}
+          type="button"
+          className="group relative h-96 w-72 shrink-0 overflow-hidden rounded-2xl text-left shadow-lg outline-none transition-transform duration-300 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#d8b45a]"
+          onClick={() => {
+            if (!didDragRef.current) {
+              onImageClick(image, index);
+            }
           }}
-          onClick={() => onImageClick(image, index)}
         >
-          <div className="absolute inset-0 transform origin-center transition-transform duration-300 group-hover:scale-105">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              className="object-cover rounded-2xl"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <FaWebAwesome className="w-12 h-12 text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-        </div>
+          <Image src={image.src} alt={image.alt} fill className="object-cover" sizes="288px" />
+          <span aria-hidden="true" className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
+            <FaWebAwesome className="h-12 w-12 text-[#f3d47c] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          </span>
+        </button>
       ))}
     </div>
   );

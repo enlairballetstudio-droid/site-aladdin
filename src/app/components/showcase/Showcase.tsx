@@ -1,249 +1,52 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 
-// Animation variants
-const fadeIn = (direction: 'up' | 'down' = 'up', delay = 0.1) => ({
-  hidden: { 
-    y: direction === 'up' ? 40 : -40,
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      duration: 0.5,
-      ease: [0.25, 0.6, 0.3, 0.8],
-    },
-  },
-  show: {
-    y: 0,
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: 'tween',
-      duration: 0.5,
-      delay,
-      ease: [0.25, 0.25, 0.25, 0.75],
-    },
-  },
-});
-
-const staggerContainer = (staggerChildren = 0.1, delayChildren = 0.1) => ({
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren,
-      delayChildren,
-    },
-  },
-});
-
-const cardHover = {
-  y: -10,
-  transition: {
-    type: 'spring',
-    stiffness: 400,
-    damping: 10,
-  },
-};
-
-const cardTap = {
-  scale: 0.98,
-  transition: {
-    type: 'spring',
-    stiffness: 500,
-    damping: 30,
-  },
-};
-
-
-
-interface GalleryImageType {
-  id: number;
-  src: string;
-  alt: string;
-  category: string;
-}
+const galleryImages = [1, 2, 3, 4, 5, 8,  9, 10, 11, 12, 13, 14].map((id) => ({
+  id,
+  src: `/galeria/galeria-${id}.webp`,
+  alt: `Registro do espetáculo Cinderela — foto ${id}`,
+}));
 
 interface ShowcaseProps {
-  font: {
-    className: string;
-  };
+  font: { className: string };
 }
 
-const Showcase: React.FC<ShowcaseProps> = ({ font }) => {
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedImage, setSelectedImage] = useState<GalleryImageType | null>(null);
-
-
-  const handleImageClick = (image: GalleryImageType) => {
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+export default function Showcase({ font }: ShowcaseProps) {
+  const [selectedImage, setSelectedImage] = useState<(typeof galleryImages)[number] | null>(null);
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-700 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center mb-16"
-          variants={fadeIn('up')}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <h2 className={`${font.className} text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4`}>
-            Galeria de Fotos
-          </h2>
-          <p className="text-lg text-purple-200 max-w-2xl mx-auto">
-          Evento realizado em 2024
-            <span className="block mt-3 text-yellow-200 font-medium">
-              Tema "A bela adormecida"
-            </span>
-          </p>
-        </motion.div>
+    <section className="content-visibility-auto relative overflow-hidden bg-gradient-to-br from-[#17375f] via-[#2f5d9b] to-[#6baed0] py-20 text-white">
+      <div className="absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-[#d8b45a]/20 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#f5dda0]">Cinderela</p>
+          <h2 className={`${font.className} mb-4 text-4xl font-bold md:text-6xl`}>Galeria de fotos</h2>
+          <p className="mx-auto max-w-2xl text-lg text-[#e8f6fc]">Momentos que já fazem parte da magia do nosso espetáculo.</p>
+        </div>
 
-        {/* Category Filters
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          variants={fadeIn('up', 0.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category.id
-                  ? 'bg-white text-purple-900 shadow-lg shadow-purple-500/30'
-                  : 'bg-purple-800/50 text-white hover:bg-purple-800/70 border border-purple-700/50'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category.name}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {galleryImages.map((image) => (
+            <motion.button key={image.id} type="button" onClick={() => setSelectedImage(image)} className="group relative overflow-hidden rounded-2xl text-left shadow-lg focus:outline-none focus:ring-4 focus:ring-[#f3d47c]" whileHover={{ y: -8 }} whileTap={{ scale: 0.98 }} aria-label={`Ampliar ${image.alt}`}>
+              <Image src={image.src} alt={image.alt} width={700} height={500} className="h-64 w-full object-cover transition duration-500 group-hover:scale-110" />
+              <span className="absolute inset-0 bg-gradient-to-t from-[#14243d]/60 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             </motion.button>
           ))}
-        </motion.div> */}
-
-        {/* Image Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div 
-            key={activeCategory}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            variants={staggerContainer(0.05, 0.1)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-          >
-            {Array.from({ length: 15 }).map((_, index) => (
-              <motion.div 
-                key={index}
-                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-                variants={fadeIn('up')}
-                whileHover={cardHover}
-                whileTap={cardTap}
-                onClick={() => handleImageClick({
-                  id: index,
-                  src: `/imagens/2024/${index + 1}.webp`,
-                  alt: `Imagem ${index + 1}`,
-                  category: 'performance',
-                })}
-                layout
-              >
-                <div className="aspect-w-16 aspect-h-9 bg-purple-100 rounded-2xl overflow-hidden">
-                  <Image
-                    src={`/imagens/2024/${index + 1}.webp`}
-                    alt={`Imagem ${index + 1}`}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-            
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* View More Button */}
-        {/* <motion.div 
-          className="text-center mt-12"
-          variants={fadeIn('up', 0.3)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <motion.button 
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-purple-500/30"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Ver Mais Fotos
-          </motion.button>
-        </motion.div> */}
+        </div>
       </div>
 
-      {/* Image Modal */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={closeModal}
-          >
-            <motion.div 
-              className="relative max-w-4xl w-full"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                className="absolute -top-12 right-0 text-white hover:text-purple-300 transition-colors"
-                onClick={closeModal}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <div className="relative aspect-video bg-gray-800 rounded-lg overflow-hidden">
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-                />
-              </div>
+          <motion.div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedImage(null)}>
+            <motion.div className="relative w-full max-w-5xl" initial={{ scale: 0.94 }} animate={{ scale: 1 }} exit={{ scale: 0.94 }} onClick={(event) => event.stopPropagation()}>
+              <button type="button" onClick={() => setSelectedImage(null)} className="mb-3 ml-auto block rounded-full bg-white/15 px-4 py-2 font-semibold text-white focus:outline-none focus:ring-2 focus:ring-white">Fechar</button>
+              <Image src={selectedImage.src} alt={selectedImage.alt} width={1400} height={1000} className="max-h-[80vh] w-full rounded-xl object-contain" />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Decorative elements */}
-      <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-      />
-      <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-      />
     </section>
   );
-};
-
-
-
-export default Showcase;
+}

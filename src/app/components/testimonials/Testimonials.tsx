@@ -1,210 +1,118 @@
 'use client';
-import { motion, Variants } from 'framer-motion';
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { 
-  fadeIn, 
-  staggerContainer, 
-  textVariant, 
-  cardHover, 
-  cardTap, 
-  staggerTestimonials, 
-  testimonialItem 
-} from '@/app/animations';
+import { cardHover, staggerTestimonials, testimonialItem, textVariant } from '@/app/animations';
 
 interface TestimonialCardProps {
-  name: string;
-  role: string;
-  avatar: string;
-  content: string;
-  rating: number;
-  index: number;
+  readonly name: string;
+  readonly role: string;
+  readonly avatar: string;
+  readonly content: string;
+  readonly rating: number;
 }
 
-const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, role, avatar, content, rating, index }) => {
+function TestimonialCard({ name, role, avatar, content, rating }: TestimonialCardProps) {
   return (
-    <motion.div 
-      className="bg-white p-8 rounded-2xl shadow-lg h-full flex flex-col relative overflow-hidden group"
-      whileHover={cardHover}
-      whileTap={cardTap}
+    <motion.article
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white p-8 shadow-lg"
       variants={testimonialItem}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-50px" }}
+      whileHover={cardHover}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#eef9fe] to-[#fdf8e8] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="relative z-10">
-      <div className="flex items-center gap-4 mb-6">
-        <motion.div 
-          className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-400"
-          whileHover={{ rotate: 5, scale: 1.05 }}
-        >
-          <Image 
-            src={avatar} 
-            alt={name}
-            width={64}
-            height={64}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        <div>
-          <p className="font-bold text-lg text-blue-900">{name}</p>
-          <p className="text-gray-600 text-sm">{role}</p>
+        <div className="mb-6 flex items-center gap-4">
+          <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-[#7fbfdc] bg-[#eef9fe]">
+            <Image
+              src={avatar}
+              alt={`Avatar ilustrativo de ${name}`}
+              width={64}
+              height={64}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div>
+            <p className="text-lg font-bold text-[#17375f]">{name}</p>
+            <p className="text-sm text-slate-600">{role}</p>
+          </div>
         </div>
-      </div>
-      
-      <div className="mb-6 flex">
-        {[...Array(5)].map((_, i) => (
-          <motion.span 
-            key={i}
-            className="text-xl"
-            initial={{ scale: 1 }}
-            whileHover={{ 
-              scale: 1.3,
-              rotate: i % 2 === 0 ? 10 : -10,
-              transition: { type: 'spring', stiffness: 500 }
-            }}
-            style={{ 
-              color: i < rating ? '#F59E0B' : '#E5E7EB',
-              display: 'inline-block',
-              marginRight: '2px'
-            }}
-          >
-            ★
-          </motion.span>
-        ))}
-      </div>
-      
-      <motion.div 
-        className="text-gray-700 flex-grow text-justify relative pl-6 before:content-[''] before:absolute before:left-0 before:top-2 before:h-[calc(100%-1rem)] before:w-0.5 before:bg-gradient-to-b before:from-yellow-400 before:to-pink-500 before:rounded-full"
-        initial={{ opacity: 0, x: -10 }}
-        whileInView={{ 
-          opacity: 1, 
-          x: 0,
-          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-        }}
-        viewport={{ once: true }}
-      >
-        <span className="text-6xl leading-none text-gray-200 absolute -top-2 left-0 font-serif">"</span>
-        <p className="relative z-10 pl-2">{content}</p>
-        <span className="text-6xl leading-none text-gray-200 absolute -bottom-6 right-2 font-serif">"</span>
-      </motion.div>
-      </div>
-    </motion.div>
-  );
-};
 
-interface TestimonialsProps {
-  font: {
-    className: string;
-  };
-}
-
-const Testimonials: React.FC<TestimonialsProps> = ({ font }) => {
-  const testimonials = [
-    {
-      name: 'Ana Clara',
-      role: 'Mãe da Sofia',
-      avatar: 'https://avatar.iran.liara.run/public/girl',
-      content: 'Ver minha filha brilhar no palco foi uma das melhores experiências da nossa vida. A produção foi impecável e a alegria dela não tem preço!',
-      rating: 5
-    },
-    {
-      name: 'Carlos Eduardo',
-      role: 'Pai da Laura',
-      avatar: 'https://avatar.iran.liara.run/public/boy',
-      content: 'A dedicação da equipe do En L\'air é impressionante. Minha filha se desenvolveu muito e o espetáculo foi mágico, superou todas as expectativas!',
-      rating: 5
-    },
-
-  ];
-
-  return (
-    <section className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-b from-purple-50 to-white">
-      {/* Decorative elements */}
-      <motion.div 
-        className="absolute -top-20 -right-20 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
-        animate={{
-          scale: [1, 1.1, 1],
-          rotate: [0, 10, 0]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'easeInOut'
-        }}
-      />
-      
-      <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: 'url("/images/arabesque-pattern.png")',
-            backgroundSize: '500px',
-            opacity: 0.05
-          }} 
-        />
-      </div>
-      
-      <motion.div 
-        className="container mx-auto px-4 relative"
-        variants={staggerTestimonials}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        <motion.div 
-          className="text-center mb-20"
-          variants={textVariant(0.2)}
-        >
-          <motion.h2 
-            className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${font.className} text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-600`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ 
-              opacity: 1, 
-              y: 0,
-              transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-            }}
-            viewport={{ once: true }}
-          >
-            O Que Dizem Quem Já Viveu Essa Magia
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-700 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ 
-              opacity: 1, 
-              y: 0,
-              transition: { duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }
-            }}
-            viewport={{ once: true }}
-          >
-            Depoimentos de pais e alunos que já fizeram parte dos nossos espetáculos
-          </motion.p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 max-w-[900px] mx-auto lg:grid-cols-2 gap-8 relative z-10">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={testimonial.name} {...testimonial} index={index} />
+        <div className="mb-6 flex gap-0.5" aria-label={`${rating} de 5 estrelas`}>
+          {Array.from({ length: 5 }, (_, index) => (
+            <span key={index} aria-hidden="true" className={index < rating ? 'text-xl text-[#d8b45a]' : 'text-xl text-slate-200'}>
+              ★
+            </span>
           ))}
         </div>
-        
-      </motion.div>
-      
-      <style jsx global>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+
+        <div className="relative flex-grow border-l-2 border-[#d8b45a] pl-6 text-justify text-slate-700">
+          <span aria-hidden="true" className="absolute -left-1.5 -top-4 font-serif text-6xl leading-none text-[#d8b45a]/25">
+            “
+          </span>
+          <p className="relative z-10">{content}</p>
+          <span aria-hidden="true" className="absolute -bottom-10 right-0 font-serif text-6xl leading-none text-[#d8b45a]/25">
+            ”
+          </span>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+interface TestimonialsProps {
+  readonly font: { className: string };
+}
+
+const testimonials: readonly TestimonialCardProps[] = [
+  {
+    name: 'Ana Clara',
+    role: 'Mãe da Sofia',
+    avatar: '/avatars/ana-clara.svg',
+    content: 'Ver minha filha brilhar no palco foi uma das melhores experiências da nossa vida. A produção foi impecável e a alegria dela não tem preço!',
+    rating: 5,
+  },
+  {
+    name: 'Carlos Eduardo',
+    role: 'Pai da Laura',
+    avatar: '/avatars/carlos-eduardo.svg',
+    content: "A dedicação da equipe do En L'air é impressionante. Minha filha se desenvolveu muito e o espetáculo foi mágico, superou todas as expectativas!",
+    rating: 5,
+  },
+];
+
+export default function Testimonials({ font }: TestimonialsProps) {
+  return (
+    <section className="content-visibility-auto relative overflow-hidden bg-gradient-to-b from-[#eef9fe] to-white py-20 md:py-32">
+      <div aria-hidden="true" className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#d8b45a]/15 blur-3xl" />
+
+      <div className="container relative mx-auto px-4">
+        <motion.div
+          className="mb-16 text-center md:mb-20"
+          variants={textVariant(0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.35 }}
+        >
+          <h2 className={`mb-6 text-4xl font-bold text-[#2f5d9b] md:text-5xl lg:text-6xl ${font.className}`}>
+            O Que Dizem Quem Já Viveu Essa Magia
+          </h2>
+          <p className="mx-auto max-w-3xl text-xl text-slate-700">
+            Depoimentos de pais e alunos que já fizeram parte dos nossos espetáculos
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 mx-auto grid max-w-[900px] grid-cols-1 gap-8 md:grid-cols-2"
+          variants={staggerTestimonials}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.name} {...testimonial} />
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
-};
-
-export default Testimonials;
+}

@@ -1,44 +1,25 @@
-import GalleryWrapper from './GalleryWrapper'
+import GalleryWrapper from './GalleryWrapper';
 
-const originalImages = [
-  { src: '/imagens/making/1.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/2.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/3.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/4.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/5.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/6.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/7.webp', alt: 'Edições Anteriores' },
-  { src: '/imagens/making/8.webp', alt: 'Edições Anteriores' }, 
-  { src: '/imagens/making/9.webp', alt: 'Edições Anteriores' },
+const originalImages = [1, 2, 3, 4, 6, 7].map((id) => ({
+  src: `/galeria/making-${id}.webp`,
+  alt: `Making of do espetáculo Cinderela — foto ${id}`,
+}));
 
-];
-
-
-interface ShowcaseProps {
-  font: {
-    className: string;
-  };
+interface PremiumGalleryProps {
+  font: { className: string };
 }
 
-export default function PremiumGallery({ font }: ShowcaseProps) {
+export default function PremiumGallery({ font }: PremiumGalleryProps) {
   return (
-    <section className="py-20 bg-white overflow-hidden relative">
-      <div>
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl max-md:hidden md:text-5xl tracking-wide text-blue-600 mb-4 ${font.className}`}>
-            Making Of - Espetáculo 2024
-          </h2>
-          <h2 className={`text-4xl md:hidden md:text-5xl whitespace-pre-line tracking-wide text-blue-600 mb-4 ${font.className}`}>
-            Making Of {"\n"} Espetáculo 2024
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Tema - A bela adormecida
-          </p>
+    <section className="content-visibility-auto relative overflow-hidden bg-white py-20">
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#eef9fe] to-transparent" />
+      <div className="relative">
+        <div className="mb-16 px-4 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#b4872e]">Por trás da magia</p>
+          <h2 className={`text-4xl tracking-wide text-[#2f5d9b] md:text-5xl ${font.className}`}>Making off — Espetáculo 2025</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Cada detalhe é preparado para transformar sonho em memória.</p>
         </div>
-        
-        <GalleryWrapper 
-          originalImages={originalImages}
-        />
+        <GalleryWrapper originalImages={originalImages} />
       </div>
     </section>
   );

@@ -1,35 +1,32 @@
-import { Variants } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+
+type Direction = 'up' | 'down' | 'left' | 'right';
 
 interface FadeInOptions {
-  direction?: 'up' | 'down' | 'left' | 'right';
-  delay?: number;
-  type?: string;
-  duration?: number;
+  readonly direction?: Direction;
+  readonly delay?: number;
+  readonly duration?: number;
 }
 
-export const fadeIn = (options: FadeInOptions | 'up' | 'down' | 'left' | 'right' = {}): Variants => {
-  // Backward compatibility with string direction
-  const direction = typeof options === 'string' ? options : (options.direction || 'up');
-  const delay = typeof options === 'object' ? (options.delay || 0) : 0;
-  const type = typeof options === 'object' ? (options.type || 'tween') : 'tween';
-  const duration = typeof options === 'object' ? (options.duration || 0.8) : 0.8;
-  
+const TRANSITION_EASE = [0.22, 1, 0.36, 1] as const;
+
+export const fadeIn = (options: FadeInOptions | Direction = {}): Variants => {
+  const direction = typeof options === 'string' ? options : (options.direction ?? 'up');
+  const delay = typeof options === 'string' ? 0 : (options.delay ?? 0);
+  const duration = typeof options === 'string' ? 0.55 : (options.duration ?? 0.55);
+  const distance = 28;
+
   return {
     hidden: {
-      y: direction === 'up' ? 40 : direction === 'down' ? -40 : 0,
-      x: direction === 'left' ? 40 : direction === 'right' ? -40 : 0,
       opacity: 0,
+      x: direction === 'left' ? distance : direction === 'right' ? -distance : 0,
+      y: direction === 'up' ? distance : direction === 'down' ? -distance : 0,
     },
     show: {
-      y: 0,
-      x: 0,
       opacity: 1,
-      transition: {
-        type: 'tween',
-        duration: 0.8,
-        delay,
-        ease: [0.25, 0.25, 0, 1],
-      },
+      x: 0,
+      y: 0,
+      transition: { delay, duration, ease: TRANSITION_EASE },
     },
   };
 };
@@ -37,143 +34,81 @@ export const fadeIn = (options: FadeInOptions | 'up' | 'down' | 'left' | 'right'
 export const staggerContainer = (staggerChildren = 0.1, delayChildren = 0.1): Variants => ({
   hidden: {},
   show: {
-    transition: {
-      staggerChildren,
-      delayChildren,
-    },
+    transition: { staggerChildren, delayChildren },
   },
 });
 
-export const textVariant = (delay = 0) => ({
-  hidden: {
-    y: 50,
-    opacity: 0,
-  },
+export const textVariant = (delay = 0): Variants => ({
+  hidden: { opacity: 0, y: 24 },
   show: {
+    opacity: 1,
     y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      duration: 1.25,
-      delay,
-    },
+    transition: { delay, duration: 0.6, ease: TRANSITION_EASE },
   },
 });
 
-export const zoomIn = (delay = 0, duration = 0.5) => ({
-  hidden: {
-    scale: 0.5,
-    opacity: 0,
-  },
+export const zoomIn = (delay = 0, duration = 0.5): Variants => ({
+  hidden: { opacity: 0, scale: 0.96 },
   show: {
-    scale: 1,
     opacity: 1,
-    transition: {
-      type: 'tween',
-      delay,
-      duration,
-      ease: 'easeOut',
-    },
+    scale: 1,
+    transition: { delay, duration, ease: TRANSITION_EASE },
   },
 });
 
 export const buttonHover = {
-  scale: 1.05,
-  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-  transition: {
-    type: 'spring',
-    stiffness: 400,
-    damping: 10,
-  },
+  scale: 1.025,
+  transition: { type: 'spring', stiffness: 360, damping: 22 },
 };
 
 export const buttonTap = {
   scale: 0.98,
-  transition: {
-    type: 'spring',
-    stiffness: 400,
-    damping: 20,
-  },
+  transition: { type: 'spring', stiffness: 440, damping: 26 },
 };
 
 export const floatingAnimation = {
-  y: ['0%', '-5%', '0%'],
+  y: [0, -10, 0],
   transition: {
-    duration: 4,
+    duration: 5,
     ease: 'easeInOut',
     repeat: Infinity,
-    repeatType: 'reverse' as const,
+    repeatType: 'mirror' as const,
   },
 };
 
 export const pulseAnimation = {
-  scale: [1, 1.05, 1],
+  scale: [1, 1.025, 1],
   transition: {
-    duration: 2,
+    duration: 3,
     ease: 'easeInOut',
     repeat: Infinity,
-    repeatType: 'reverse' as const,
+    repeatType: 'mirror' as const,
   },
 };
 
 export const cardHover = {
-  y: -8,
-  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
-  transition: {
-    type: 'spring',
-    stiffness: 400,
-    damping: 15,
-    mass: 0.5
-  }
+  y: -4,
+  boxShadow: '0 20px 40px -20px rgba(23, 55, 95, 0.35)',
+  transition: { type: 'spring', stiffness: 300, damping: 24, mass: 0.7 },
 };
 
 export const cardTap = {
-  scale: 0.96,
-  transition: {
-    type: 'spring',
-    stiffness: 600,
-    damping: 20,
-    mass: 0.8
-  }
+  scale: 0.985,
+  transition: { type: 'spring', stiffness: 440, damping: 28 },
 };
 
-export const staggerTestimonials = {
-  hidden: { opacity: 0 },
+export const staggerTestimonials: Variants = {
+  hidden: {},
   show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-      when: 'beforeChildren',
-      staggerDirection: 1
-    }
-  }
+    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
+  },
 };
 
-export const testimonialItem = {
-  hidden: { 
-    opacity: 0,
-    y: 25,
-    scale: 0.98
-  },
+export const testimonialItem: Variants = {
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 120,
-      damping: 18,
-      mass: 0.8,
-      velocity: 2
-    }
+    transition: { duration: 0.55, ease: TRANSITION_EASE },
   },
-  hover: {
-    scale: 1.02,
-    transition: {
-      type: 'spring',
-      stiffness: 300,
-      damping: 15
-    }
-  }
 };

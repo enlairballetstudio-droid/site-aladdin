@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Avatar ilustrativo de Ana Clara</title>
+  <desc id="desc">Ilustração de uma mãe sorridente sobre fundo azul-claro.</desc>
+  <rect width="160" height="160" rx="80" fill="#ccecf8"/>
+  <path d="M26 151c5-34 26-51 54-51s49 17 54 51" fill="#2f5d9b"/>
+  <path d="M46 72c0-27 15-44 34-44 25 0 40 19 35 48l-5 24H50z" fill="#5a3d30"/>
+  <circle cx="80" cy="75" r="31" fill="#d89e7b"/>
+  <path d="M47 69c1-31 18-47 37-47 24 0 35 19 33 41-15-10-38-14-70 6z" fill="#4a3028"/>
+  <path d="M62 79c5 3 10 3 14 0M86 79c5 3 10 3 14 0M69 93c7 6 15 6 22 0" fill="none" stroke="#5a3d30" stroke-linecap="round" stroke-width="3"/>
+  <path d="M55 114c8 11 17 16 25 16s17-5 25-16" fill="#f6d2b4"/>
+</svg>

@@ -142,3 +142,22 @@
 .animate-fade-in-delay-1000 {
   animation: fade-in 0.8s ease-out 1s forwards;
 }
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

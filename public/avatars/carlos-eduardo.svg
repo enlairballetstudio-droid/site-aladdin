@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Avatar ilustrativo de Carlos Eduardo</title>
+  <desc id="desc">Ilustração de um pai sorridente sobre fundo azul-claro.</desc>
+  <rect width="160" height="160" rx="80" fill="#e8f6fc"/>
+  <path d="M22 151c5-31 25-50 58-50s53 19 58 50" fill="#17375f"/>
+  <circle cx="80" cy="73" r="32" fill="#bc7d58"/>
+  <path d="M47 70c0-28 14-45 34-45 25 0 38 17 37 42-13-9-38-15-71 3z" fill="#27384b"/>
+  <path d="M60 80c4 3 10 3 14 0M87 80c4 3 10 3 14 0M69 95c7 5 15 5 22 0" fill="none" stroke="#4e2f24" stroke-linecap="round" stroke-width="3"/>
+  <path d="M53 112c8 13 17 19 27 19s20-6 27-19" fill="#a9d9ee"/>
+</svg>
