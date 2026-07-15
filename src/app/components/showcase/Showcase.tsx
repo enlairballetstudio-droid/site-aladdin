@@ -22,7 +22,7 @@ export default function Showcase({ font }: ShowcaseProps) {
       <div className="absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-[#d8b45a]/20 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-14 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#f5dda0]">Cinderela</p>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#f5dda0]">Aladdin 2025</p>
           <h2 className={`${font.className} mb-4 text-4xl font-bold md:text-6xl`}>Galeria de fotos</h2>
           <p className="mx-auto max-w-2xl text-lg text-[#e8f6fc]">Momentos que já fazem parte da magia do nosso espetáculo.</p>
         </div>
