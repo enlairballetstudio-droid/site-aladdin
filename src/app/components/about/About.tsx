@@ -21,7 +21,7 @@ export default function About({ font }: AboutProps) {
               <Image src="/galeria/about.jpeg" alt="Bailarina do espetáculo Cinderela" width={700} height={950} className="h-full w-full object-cover" priority />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#14243d]/75 to-transparent px-7 pb-7 pt-24 text-white">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f3d47c]">Espetáculo 2025</p>
-                <p className={`${font.className} mt-1 text-3xl`}>Cinderela</p>
+                <p className={`${font.className} mt-1 text-3xl`}>Aladdin</p>
               </div>
             </div>
           </motion.div>
