@@ -1,95 +1,110 @@
 'use client';
 
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
-import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
 type ImageType = {
-  src: string;
-  alt: string;
+  readonly src: string;
+  readonly alt: string;
 };
 
 type ImageModalProps = {
-  isOpen: boolean;
-  selectedImage: ImageType | null;
-  currentIndex: number;
-  totalImages: number;
-  onClose: () => void;
-  onNavigate: (direction: 'prev' | 'next') => void;
+  readonly isOpen: boolean;
+  readonly selectedImage: ImageType | null;
+  readonly currentIndex: number;
+  readonly totalImages: number;
+  readonly onClose: () => void;
+  readonly onNavigate: (direction: 'prev' | 'next') => void;
 };
 
-export default function ImageModal({ 
-  isOpen, 
-  selectedImage, 
-  currentIndex, 
-  totalImages, 
-  onClose, 
-  onNavigate 
+export default function ImageModal({
+  isOpen,
+  selectedImage,
+  currentIndex,
+  totalImages,
+  onClose,
+  onNavigate,
 }: ImageModalProps) {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
-      
-      if (e.key === 'Escape') {
-        onClose();
-      } else if (e.key === 'ArrowRight') {
-        onNavigate('next');
-      } else if (e.key === 'ArrowLeft') {
-        onNavigate('prev');
-      }
+    if (!isOpen) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+      if (event.key === 'ArrowRight') onNavigate('next');
+      if (event.key === 'ArrowLeft') onNavigate('prev');
     };
 
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isOpen, onClose, onNavigate]);
 
-  if (!isOpen || !selectedImage) return null;
+  if (!isOpen || !selectedImage || typeof document === 'undefined') return null;
 
-  return (
-    <div 
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" 
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={selectedImage.alt}
+      className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden overscroll-contain bg-black/90 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
-      <div className="relative max-w-4xl w-full max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
-        <button 
+      <div
+        className="relative flex max-h-[calc(100dvh-2rem)] w-full max-w-5xl flex-col items-center"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          type="button"
           onClick={onClose}
-          className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors z-10"
-          aria-label="Fechar"
+          className="absolute right-2 top-2 z-20 rounded-full bg-black/70 p-3 text-white transition-colors hover:bg-black focus:outline-none focus:ring-2 focus:ring-white"
+          aria-label="Fechar imagem"
         >
-          <FaTimes size={28} />
+          <FaTimes size={24} />
         </button>
-        
-        <button 
-          onClick={(e) => { e.stopPropagation(); onNavigate('prev'); }}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition-all z-10"
+
+        <button
+          type="button"
+          onClick={() => onNavigate('prev')}
+          className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black focus:outline-none focus:ring-2 focus:ring-white"
           aria-label="Imagem anterior"
         >
           <FaChevronLeft size={24} />
         </button>
-        
-        <div className="relative w-full h-full max-h-[80vh] flex items-center justify-center">
-          <Image
-            src={selectedImage.src}
-            alt={selectedImage.alt}
-            width={1200}
-            height={800}
-            className="max-w-full max-h-[80vh] object-contain"
-            priority
-          />
-        </div>
-        
-        <button 
-          onClick={(e) => { e.stopPropagation(); onNavigate('next'); }}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition-all z-10"
+
+        <Image
+          src={selectedImage.src}
+          alt={selectedImage.alt}
+          width={1400}
+          height={1000}
+          sizes="100vw"
+          className="min-h-0 max-h-[calc(100dvh-6rem)] w-auto max-w-full rounded-xl object-contain"
+          priority
+        />
+
+        <button
+          type="button"
+          onClick={() => onNavigate('next')}
+          className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black focus:outline-none focus:ring-2 focus:ring-white"
           aria-label="Próxima imagem"
         >
           <FaChevronRight size={24} />
         </button>
-        
-        <div className="text-white text-center mt-4 text-lg">
+
+        <p className="mt-3 text-center text-sm text-white sm:text-base">
           {selectedImage.alt} ({currentIndex + 1} de {totalImages})
-        </div>
+        </p>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

@@ -63,17 +63,13 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
         return;
       }
 
-      if (lastTimestampRef.current === 0) {
-        lastTimestampRef.current = timestamp;
-      }
+      if (lastTimestampRef.current === 0) lastTimestampRef.current = timestamp;
 
       const elapsedSeconds = (timestamp - lastTimestampRef.current) / 1000;
       lastTimestampRef.current = timestamp;
       scrollPositionRef.current += SCROLL_SPEED_PX_PER_SECOND * elapsedSeconds;
 
-      if (scrollPositionRef.current >= loopWidth) {
-        scrollPositionRef.current = 0;
-      }
+      if (scrollPositionRef.current >= loopWidth) scrollPositionRef.current = 0;
 
       container.scrollLeft = scrollPositionRef.current;
       animationIdRef.current = requestAnimationFrame(animate);
@@ -93,9 +89,7 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
   }, [shouldAutoScroll, startAnimation, stopAnimation]);
 
   const resumeAfterInteraction = useCallback(() => {
-    if (autoScrollTimeoutRef.current) {
-      clearTimeout(autoScrollTimeoutRef.current);
-    }
+    if (autoScrollTimeoutRef.current) clearTimeout(autoScrollTimeoutRef.current);
 
     autoScrollTimeoutRef.current = setTimeout(() => {
       isPausedRef.current = false;
@@ -110,7 +104,6 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
       const container = containerRef.current;
       if (!container) return;
 
-      container.setPointerCapture(event.pointerId);
       isDraggingRef.current = true;
       didDragRef.current = false;
       isPausedRef.current = true;
@@ -127,8 +120,14 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
 
     const distance = event.clientX - startXRef.current;
     if (Math.abs(distance) > DRAG_THRESHOLD_PX) {
-      didDragRef.current = true;
+      if (!didDragRef.current) {
+        didDragRef.current = true;
+        container.setPointerCapture(event.pointerId);
+      }
+      event.preventDefault();
     }
+
+    if (!didDragRef.current) return;
 
     const nextPosition = Math.max(0, scrollLeftRef.current - distance * 1.5);
     container.scrollLeft = nextPosition;
@@ -138,9 +137,7 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
   const handlePointerEnd = useCallback(
     (event: ReactPointerEvent<HTMLDivElement>) => {
       const container = containerRef.current;
-      if (container?.hasPointerCapture(event.pointerId)) {
-        container.releasePointerCapture(event.pointerId);
-      }
+      if (container?.hasPointerCapture(event.pointerId)) container.releasePointerCapture(event.pointerId);
 
       isDraggingRef.current = false;
       resumeAfterInteraction();
@@ -180,10 +177,7 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
       mediaQuery.removeEventListener('change', updateMotionPreference);
       document.removeEventListener('visibilitychange', updatePageVisibility);
       stopAnimation();
-
-      if (autoScrollTimeoutRef.current) {
-        clearTimeout(autoScrollTimeoutRef.current);
-      }
+      if (autoScrollTimeoutRef.current) clearTimeout(autoScrollTimeoutRef.current);
     };
   }, [stopAnimation, synchronizeAnimation]);
 
@@ -203,12 +197,10 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
           type="button"
           className="group relative h-96 w-72 shrink-0 overflow-hidden rounded-2xl text-left shadow-lg outline-none transition-transform duration-300 hover:scale-[1.02] focus-visible:ring-4 focus-visible:ring-[#d8b45a]"
           onClick={() => {
-            if (!didDragRef.current) {
-              onImageClick(image, index);
-            }
+            if (!didDragRef.current) onImageClick(image, index);
           }}
         >
-          <Image src={image.src} alt={image.alt} fill className="object-cover" sizes="288px" />
+          <Image src={image.src} alt={image.alt} fill draggable={false} className="object-cover" sizes="288px" />
           <span aria-hidden="true" className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
             <FaWebAwesome className="h-12 w-12 text-[#f3d47c] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

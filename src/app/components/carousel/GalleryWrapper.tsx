@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import GalleryCarousel from './GalleryCarousel';
 import ImageModal from './ImageModal';
 
@@ -18,23 +18,13 @@ export default function GalleryWrapper({ originalImages }: GalleryWrapperProps) 
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = useMemo(() => [...originalImages, ...originalImages], [originalImages]);
 
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
-
-  const openModal = (image: GalleryImage, index: number) => {
+  const openModal = (_image: GalleryImage, index: number) => {
     const originalIndex = index % originalImages.length;
-    setSelectedImage(originalImages[originalIndex]);
     setCurrentIndex(originalIndex);
-    document.body.style.overflow = 'hidden';
+    setSelectedImage(originalImages[originalIndex]);
   };
 
-  const closeModal = () => {
-    setSelectedImage(null);
-    document.body.style.overflow = '';
-  };
+  const closeModal = () => setSelectedImage(null);
 
   const navigate = (direction: 'prev' | 'next') => {
     const nextIndex = direction === 'next'
