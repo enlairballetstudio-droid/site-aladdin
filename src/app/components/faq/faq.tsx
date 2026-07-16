@@ -50,26 +50,22 @@ const FAQ: React.FC = () => {
       icon: <FaQuestionCircle className="text-[#d8b45a]" />
     },
     {
-      question: 'Até quando poderei comprar o meu Kit Cinderela 2026?',
+      question: 'Quais são as condições para comprar o meu Kit Cinderela 2026?',
       answer: (
         <div className="space-y-3">
-          <p>Para construir este mundo mágico, temos prazos e por isso quanto antes você se inscrever, melhor será para todos nós!</p>
-          <p>Por isso fazemos condições exclusivas para quem se antecipa e garante mais cedo o seu Kit Cinderela 2026.</p>
-          <div className="bg-[#dceff8] p-4 rounded-lg border-l-4 border-[#2f5d9b]">
-            <p className="font-semibold">O preço normal do Kit Cinderela 2026 é R$997,00, mas até dia 30/07 você terá R$248,00 de desconto:</p>
-            <div className="mt-3 p-3 bg-white rounded-md">
-              <p className="line-through text-gray-500">DE: R$997,00</p>
-              <p className="text-xl font-bold text-[#2f5d9b]">POR: R$749,00</p>
-            </div>
-            <p className="mt-3 font-semibold">Formas de pagamento:</p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>3x de R$265,70 no PIX (sem juros)</li>
-              <li>Cartão de crédito em até 12x de R$81,46 (com juros)</li>
+          <p>Escolha a condição de pagamento que melhor funciona para a sua família:</p>
+          <div className="rounded-lg border-l-4 border-[#2f5d9b] bg-[#dceff8] p-4">
+            <p className="font-semibold text-[#17375f]">Condições especiais do Kit Cinderela 2026:</p>
+            <ul className="mt-3 space-y-2">
+              <li><strong>À vista no PIX:</strong> R$729,00.</li>
+              <li><strong>Parcelado no PIX:</strong> 4x de R$189,00, com a primeira parcela ainda em julho.</li>
+              <li><strong>Resposta até 10/08:</strong> 3x de R$255,00.</li>
+              <li><strong>Cartão de crédito:</strong> R$799,00 em até 12x, com juros do cartão.</li>
             </ul>
           </div>
-          <p className="font-semibold text-[#2f5d9b]">Por isso faça a inscrição o quanto antes para não perder essa oportunidade!</p>
-          <p className="text-center text-lg font-bold bg-gradient-to-r from-[#2f5d9b] to-[#4c86bd] text-white p-3 rounded-lg">
-            GARANTA JÁ O SEU Kit Cinderela 2026 COM CONDIÇÕES ESPECIAIS!
+          <p className="font-semibold text-[#2f5d9b]">Garanta sua inscrição dentro do prazo para aproveitar a condição que preferir.</p>
+          <p className="rounded-lg bg-gradient-to-r from-[#2f5d9b] to-[#4c86bd] p-3 text-center text-lg font-bold text-white">
+            GARANTA JÁ O SEU KIT CINDERELA 2026!
           </p>
         </div>
       ),

@@ -16,6 +16,7 @@ type GalleryCarouselProps = {
 
 const SCROLL_SPEED_PX_PER_SECOND = 18;
 const RESUME_DELAY_MS = 2000;
+const DRAG_THRESHOLD_PX = 8;
 
 export default function GalleryCarousel({ images, onImageClick }: GalleryCarouselProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -125,7 +126,7 @@ export default function GalleryCarousel({ images, onImageClick }: GalleryCarouse
     if (!container || !isDraggingRef.current) return;
 
     const distance = event.clientX - startXRef.current;
-    if (Math.abs(distance) > 3) {
+    if (Math.abs(distance) > DRAG_THRESHOLD_PX) {
       didDragRef.current = true;
     }
 
