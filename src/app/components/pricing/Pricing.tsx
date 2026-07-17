@@ -7,6 +7,12 @@ import { theme } from '@/app/theme/theme';
 import { buttonHover, buttonTap } from '@/app/animations';
 import Link from 'next/link';
 
+const PIX_COPY_PASTE = '00020126540014br.gov.bcb.pix0114412136100001500214Cinderela 202627600016BR.COM.PAGSEGURO0136BC45C901-FA18-411D-8C65-5408CFB39AFC5204829953039865406729.005802BR592541.213.610 FLAVIA LUIZA C6014Belo Horizonte62290525PAGS0000729002607171121586304FFEA';
+const PIX_INSTALLMENT_EMAIL = 'eventos.enlair@gmail.com';
+const WHATSAPP_URL = 'https://wa.me/5531997777994';
+const WHATSAPP_PROOF_URL = 'https://wa.me/5531997777994?text=Ol%C3%A1%21%20Estou%20enviando%20o%20comprovante%20do%20Kit%20Cinderela%202026%20e%20gostaria%20de%20solicitar%20o%20termo%20de%20compromisso.';
+const CREDIT_CARD_URL = 'https://pag.ae/81ZKzy3Qs';
+
 const fadeIn = (direction: string = 'up', delay: number = 0) => ({
   hidden: {
     y: direction === 'up' ? 40 : -40,
@@ -43,6 +49,16 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ font }) => {
   const [isHovered, setIsHovered] = useState<number | null>(null);
+  const [isPixCopied, setIsPixCopied] = useState(false);
+
+  const handleCopyPix = async () => {
+    try {
+      await navigator.clipboard.writeText(PIX_COPY_PASTE);
+      setIsPixCopied(true);
+    } catch {
+      window.prompt('Copie o código PIX:', PIX_COPY_PASTE);
+    }
+  };
   
   const features = [
     {
@@ -283,33 +299,43 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
               <div className="text-center bg-green-50 rounded-2xl p-6 mb-6">
                 <p className="text-6xl max-md:text-4xl font-extrabold text-green-700 my-2">
-                  3x <span className="text-4xl">de</span> R$ 265,70
+                  4x <span className="text-4xl">de</span> R$ 189,00
                 </p>
                 <p className="text-md font-semibold text-green-800">
-                  Ou R$ 797,00 à vista
+                  Ou R$ 729,00 à vista no PIX
                 </p>
               </div>
 
-              <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
-                <p><span className="font-bold">Válido para pagamentos até 30/09.</span></p>
-                <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
+              <div className="mb-6 rounded-lg bg-gray-100 p-4 text-sm text-gray-700">
+                <ul className="space-y-2">
+                  <li><span className="font-bold">PIX parcelado:</span> primeiro pagamento até 30/07.</li>
+                  <li><span className="font-bold">Chave PIX para o parcelado:</span> <a href={`mailto:${PIX_INSTALLMENT_EMAIL}`} className="break-all text-green-700 hover:underline">{PIX_INSTALLMENT_EMAIL}</a></li>
+                  <li><span className="font-bold">PIX à vista:</span> R$729,00, válido para pagamento até 10/08.</li>
+                  <li><span className="font-bold">Ingressos:</span> vendas a partir de 12/09, às 14:00.</li>
+                </ul>
               </div>
-              
-              <Link href="https://wa.me/5531997777994" target="_blank">
-              <motion.button 
-                className="w-full py-4 px-6 rounded-xl font-bold text-white text-lg bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+
+              <motion.button
+                type="button"
+                onClick={() => void handleCopyPix()}
+                className="w-full rounded-xl bg-green-600 px-6 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:bg-green-700 hover:shadow-xl"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Pagar com PIX <span className="text-xs">(Através do Whatsapp)</span>
+                {isPixCopied ? 'Código PIX copiado!' : 'Copiar PIX à vista — R$729,00'}
               </motion.button>
-              </Link>
-              
+
+              <div className="mt-4 rounded-lg border border-green-200 bg-green-50 p-3 text-center text-sm text-green-900">
+                <p><span className="font-bold">Importante:</span> envie o comprovante no WhatsApp para confirmar a participação e solicitar o termo de compromisso.</p>
+                <Link href={WHATSAPP_PROOF_URL} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 font-bold text-green-700 hover:underline">
+                  <FaWhatsapp /> Enviar comprovante
+                </Link>
+              </div>
+
               <div className="mt-4 text-center text-xs text-gray-500">
-                <a href="#" className="hover:underline flex items-center justify-center gap-1">
-                  <FaWhatsapp />
-                  <Link href="https://wa.me/5531997777994" target="_blank">Dúvidas? Fale conosco</Link>
-                </a>
+                <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 hover:underline">
+                  <FaWhatsapp /> Dúvidas? Fale conosco
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -327,18 +353,19 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               
               <div className="text-center bg-blue-50 rounded-2xl p-6 mb-6">
                 <p className="text-6xl max-md:text-4xl font-extrabold text-blue-700 my-2">
-                  12x <span className="text-4xl">de</span> R$ 81,46
+                  12x <span className="text-4xl">de</span> R$ 81,60
                 </p>
                 <p className="text-md font-semibold text-blue-800">
-                  Ou R$ 797,00 à vista
+                  Ou R$ 789,00 à vista
                 </p>
               </div>
 
               <div className="text-center text-sm text-gray-600 mb-6 bg-gray-100 p-3 rounded-lg">
-                 <p>Ingressos à venda a partir de <span className="font-bold">15 de setembro.</span></p>
+                <p>Parcelamento sujeito aos juros do cartão.</p>
+                <p className="mt-2">Ingressos à venda a partir de <span className="font-bold">12/09, às 14:00.</span></p>
               </div>
               
-              <Link href="https://chk.eduzz.com/E05X652DWX" target="_blank">
+              <Link href={CREDIT_CARD_URL} target="_blank" rel="noopener noreferrer">
               <motion.button 
                 className="w-full py-4 px-6 rounded-xl font-bold text-white text-lg bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.02 }}
@@ -349,10 +376,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </Link>
               
               <div className="mt-4 text-center text-xs text-gray-500">
-                <a href="#" className="hover:underline flex items-center justify-center gap-1">
-                  <FaWhatsapp />
-                  <Link href="https://wa.me/5531997777994" target="_blank">Dúvidas? Fale conosco</Link>
-                </a>
+                <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 hover:underline">
+                  <FaWhatsapp /> Dúvidas? Fale conosco
+                </Link>
               </div>
             </div>
           </motion.div>

@@ -23,7 +23,7 @@ export default function CTA({ font }: CTAProps) {
           <motion.a href="https://wa.me/5531997777994" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full border-2 px-8 py-4 text-lg font-semibold text-white" style={{ borderColor: theme.colors.secondary }} whileHover={buttonHover} whileTap={buttonTap}><FaWhatsapp className="mr-3" />Falar pelo WhatsApp</motion.a>
         </div>
         <div className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/20 bg-white/10 p-6 text-left backdrop-blur-sm"><FaTicketAlt className="mb-4 text-2xl text-[#f3d47c]" /><p className="font-bold text-[#f3d47c]">Data</p><p className="mt-1 text-lg text-white">02 de novembro de 2026</p></div>
+          <div className="rounded-2xl border border-white/20 bg-white/10 p-6 text-left backdrop-blur-sm"><FaTicketAlt className="mb-4 text-2xl text-[#f3d47c]" /><p className="font-bold text-[#f3d47c]">Data e horário</p><p className="mt-1 text-lg text-white">Segunda-feira, 02 de novembro de 2026, às 15:00</p><p className="mt-1 text-sm text-white/70">Sessão única</p></div>
           <div className="rounded-2xl border border-white/20 bg-white/10 p-6 text-left backdrop-blur-sm"><FaMapMarkerAlt className="mb-4 text-2xl text-[#f3d47c]" /><p className="font-bold text-[#f3d47c]">Local</p><p className="mt-1 text-lg text-white">Teatro Municipal de Ibirité</p><p className="text-sm text-white/70">Rua Silveira, 47 — São Geraldo, Ibirité</p></div>
         </div>
       </div>

@@ -18,12 +18,12 @@ export default function Hero({ font }: HeroProps) {
       viewport={{ once: true, amount: 0.25 }}
     >
       <Image
-        src="/galeria/hero.jpeg"
+        src="/imagens/hero-fundo.webp"
         alt="Bailarina no espetáculo Cinderela"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center opacity-40"
+        className="scale-x-[-1] object-cover object-center opacity-40"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#102442]/95 via-[#1d4d81]/80 to-[#8dc9e3]/30" />
       <div className="absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#d8b45a]/25 blur-3xl" />

@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 
-const galleryImages = Array.from({ length: 12 }, (_, index) => index + 1).map((id) => ({
+const galleryImages = Array.from({ length: 15 }, (_, index) => index + 1).map((id) => ({
   id,
   src: `/galeria/galeria-${id}.webp`,
   alt: `Registro do espetáculo Cinderela — foto ${id}`,

@@ -20,8 +20,8 @@ export default function About({ font }: AboutProps) {
             <div className="relative overflow-hidden rounded-[1.6rem] shadow-2xl">
               <Image src="/galeria/about.jpeg" alt="Bailarina do espetáculo Cinderela" width={700} height={950} className="h-full w-full object-cover" priority />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#14243d]/75 to-transparent px-7 pb-7 pt-24 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f3d47c]">Espetáculo 2025</p>
-                <p className={`${font.className} mt-1 text-3xl`}>Aladdin</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f3d47c]">Espetáculo 2026</p>
+                <p className={`${font.className} mt-1 text-3xl`}>Cinderela</p>
               </div>
             </div>
           </motion.div>
@@ -37,9 +37,10 @@ export default function About({ font }: AboutProps) {
               <article className="rounded-2xl border border-[#cce4f2] bg-white p-6 shadow-lg">
                 <div className="mb-5 flex items-center gap-3 text-[#2f5d9b]"><span className="rounded-xl bg-[#dceff8] p-3"><HiOutlineCalendar className="text-3xl" /></span><h3 className="text-xl font-bold">Data do Espetáculo</h3></div>
                 <p className="text-3xl font-bold text-[#17375f]">02 de Novembro</p>
-                <p className="mt-2 text-lg font-semibold text-[#2f5d9b]">Domingo • 2026</p>
+                <p className="mt-2 text-lg font-semibold text-[#2f5d9b]">Segunda-feira • 2026</p>
                 <div className="mt-4 flex flex-col gap-2 text-sm text-slate-600">
-                  <p><span className="font-semibold">Horários:</span> Sessões às 15h e 18h</p>
+                  <p><span className="font-semibold">Horário:</span> Sessão única às 15:00</p>
+                  <p><span className="font-semibold">Ingressos:</span> vendas a partir de 12/09, às 14:00</p>
                 </div>
               </article>
               <article className="rounded-2xl border border-[#cce4f2] bg-white p-6 shadow-lg">

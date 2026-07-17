@@ -1,8 +1,10 @@
 import GalleryWrapper from './GalleryWrapper';
 
-const originalImages = [1, 2, 3, 4, 6, 7].map((id) => ({
-  src: `/galeria/making-${id}.webp`,
-  alt: `Making of do espetáculo Cinderela — foto ${id}`,
+const MAKING_GALLERY_VERSION = '2026-07-17-1';
+
+const originalImages = Array.from({ length: 9 }, (_, index) => index + 1).map((id) => ({
+  src: `/galeria/making-${id}.webp?v=${MAKING_GALLERY_VERSION}`,
+  alt: `Making of do espetáculo — foto ${id}`,
 }));
 
 interface PremiumGalleryProps {
@@ -16,7 +18,7 @@ export default function PremiumGallery({ font }: PremiumGalleryProps) {
       <div className="relative">
         <div className="mb-16 px-4 text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#b4872e]">Por trás da magia</p>
-          <h2 className={`text-4xl tracking-wide text-[#2f5d9b] md:text-5xl ${font.className}`}>Making off — Espetáculo 2025</h2>
+          <h2 className={`text-4xl tracking-wide text-[#2f5d9b] md:text-5xl ${font.className}`}>Making of — Bastidores do espetáculo</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Cada detalhe é preparado para transformar sonho em memória.</p>
         </div>
         <GalleryWrapper originalImages={originalImages} />
