@@ -90,7 +90,7 @@ const FAQ: React.FC = () => {
           <div className="bg-[#dceff8] p-3 rounded-lg mt-2">
             <p className="font-semibold text-[#2f5d9b]">Valor para duas irmãs:</p>
             <p className="line-through text-gray-500">DE: R$1.458,00</p>
-            <p className="text-xl font-bold text-[#2f5d9b]">POR: R$1.239,30 (15% de desconto)</p>
+            <p className="text-xl font-bold text-[#2f5d9b]">POR: R$1.239,30 (15% de desconto para a segunda irmã)</p>
           </div>
         </div>
       ),
