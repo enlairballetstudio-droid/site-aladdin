@@ -43,7 +43,7 @@ export default function Hero({ font }: HeroProps) {
             </motion.p>
             <motion.div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start" variants={fadeIn({ direction: 'up', delay: 0.6 })}>
               <motion.a
-                href="https://diversosingressos.com.br/event/ec7114db-7351-43e5-9521-7592db374b33"
+                href="https://diversosingressos.com.br/event/5ff9ca83-1ada-4abf-a2b0-d2dc732e99f2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-gradient-to-r from-[#e6c667] to-[#c99d3c] px-8 py-4 text-center text-lg font-bold text-[#17375f] shadow-lg"

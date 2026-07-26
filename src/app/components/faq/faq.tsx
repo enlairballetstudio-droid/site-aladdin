@@ -45,7 +45,7 @@ const FAQ: React.FC = () => {
       answer: (
         <div className="space-y-2">
           <p>Sim! As cadeiras serão numeradas para a sessão única das 15:00, garantindo seu conforto e melhor organização.</p>
-          <p>Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online através da <a href="https://www.diversosingressos.com.br/" target="_blank" rel="noopener noreferrer" className="text-[#2f5d9b] font-semibold hover:underline">Diversos Ingressos</a>.</p>
+          <p>Para o seu melhor conforto e maior organização, as vendas dos ingressos serão feitas exclusivamente em plataforma online através da <a href="https://diversosingressos.com.br/event/5ff9ca83-1ada-4abf-a2b0-d2dc732e99f2" target="_blank" rel="noopener noreferrer" className="text-[#2f5d9b] font-semibold hover:underline">Diversos Ingressos</a>.</p>
         </div>
       ),
       icon: <FaQuestionCircle className="text-[#d8b45a]" />
