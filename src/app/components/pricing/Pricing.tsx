@@ -299,7 +299,7 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
               </div>
               <div className="text-center bg-green-50 rounded-2xl p-6 mb-6">
                 <p className="text-6xl max-md:text-4xl font-extrabold text-green-700 my-2">
-                  4x <span className="text-4xl">de</span> R$ 189,00
+                  3x <span className="text-4xl">de</span> R$ 250,00
                 </p>
                 <p className="text-md font-semibold text-green-800">
                   Ou R$ 729,00 à vista no PIX

@@ -58,7 +58,7 @@ const FAQ: React.FC = () => {
           <div className="rounded-lg border-l-4 border-[#2f5d9b] bg-[#dceff8] p-4">
             <p className="font-semibold text-[#17375f]">Condições especiais do Kit Cinderela 2026:</p>
             <ul className="mt-3 space-y-2">
-              <li><strong>PIX parcelado:</strong> 4x de R$189,00, com o primeiro pagamento até 30/07. A chave é <a href="mailto:eventos.enlair@gmail.com" className="break-all text-[#2f5d9b] hover:underline">eventos.enlair@gmail.com</a>.</li>
+              <li><strong>PIX parcelado:</strong> 3x de R$250,00, com o primeiro pagamento até 30/07. A chave é <a href="mailto:eventos.enlair@gmail.com" className="break-all text-[#2f5d9b] hover:underline">eventos.enlair@gmail.com</a>.</li>
               <li><strong>PIX à vista:</strong> R$729,00, válido para pagamento até 10/08. O código copia e cola está disponível no card de pagamento.</li>
               <li><strong>Cartão de crédito:</strong> R$789,00 à vista ou 12x de R$81,60, com juros do cartão. <a href="https://pag.ae/81ZKzy3Qs" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#2f5d9b] hover:underline">Pagar com cartão</a>.</li>
             </ul>
