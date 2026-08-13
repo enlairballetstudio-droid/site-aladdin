@@ -308,9 +308,9 @@ const Pricing: React.FC<PricingProps> = ({ font }) => {
 
               <div className="mb-6 rounded-lg bg-gray-100 p-4 text-sm text-gray-700">
                 <ul className="space-y-2">
-                  <li><span className="font-bold">PIX parcelado:</span> primeiro pagamento até 30/07.</li>
+                  <li><span className="font-bold">PIX parcelado:</span> primeiro pagamento até 20/08.</li>
                   <li><span className="font-bold">Chave PIX para o parcelado:</span> <a href={`mailto:${PIX_INSTALLMENT_EMAIL}`} className="break-all text-green-700 hover:underline">{PIX_INSTALLMENT_EMAIL}</a></li>
-                  <li><span className="font-bold">PIX à vista:</span> R$729,00, válido para pagamento até 10/08.</li>
+                  <li><span className="font-bold">PIX à vista:</span> R$729,00, válido para pagamento até 20/08.</li>
                   <li><span className="font-bold">Ingressos:</span> vendas a partir de 12/09, às 14:00.</li>
                 </ul>
               </div>
